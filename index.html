@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>動機式晤談實務指南｜醫療・長照・身心障礙服務</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#028090; --teal-soft:#D5ECEC; --orange:#E8552D; --orange-soft:#FDE4DA;
+  --amber:#F4A93C; --amber-soft:#FDF0D8; --ink:#12343B; --muted:#4F6B70;
+  --bg:#EEF6F6; --paper:#FFFFFF; --line:#C9E0E0;
+  --bubble-c:#FFFFFF; --bubble-h:#028090; --bubble-h-ink:#FFFFFF;
+  --good:#1E8A5A; --bad:#C2412A;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --teal:#3FB7C4; --teal-soft:#16393E; --orange:#FF7A55; --orange-soft:#43251C;
+    --amber:#F7BC5E; --amber-soft:#3D3120; --ink:#E6F2F2; --muted:#A5C0C3;
+    --bg:#0F2327; --paper:#16303A; --line:#27474F;
+    --bubble-c:#1D3B45; --bubble-h:#2A8F9B; --bubble-h-ink:#FFFFFF;
+    --good:#55C38E; --bad:#FF8A6E;
+  }
+}
+:root[data-theme="dark"]{
+  --teal:#3FB7C4; --teal-soft:#16393E; --orange:#FF7A55; --orange-soft:#43251C;
+  --amber:#F7BC5E; --amber-soft:#3D3120; --ink:#E6F2F2; --muted:#A5C0C3;
+  --bg:#0F2327; --paper:#16303A; --line:#27474F;
+  --bubble-c:#1D3B45; --bubble-h:#2A8F9B; --bubble-h-ink:#FFFFFF;
+  --good:#55C38E; --bad:#FF8A6E;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;font-size:17px;line-height:1.75}
+h1,h2,h3,.round{font-family:"Huninn","Noto Sans TC","Microsoft JhengHei",sans-serif;font-weight:400;letter-spacing:.02em}
+a{color:var(--teal)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
+img{max-width:100%}
+
+/* nav */
+.topnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topnav .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 18px}
+.brand{font-family:"Huninn",sans-serif;font-size:19px;white-space:nowrap;color:var(--teal);text-decoration:none}
+.navlinks{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{flex:none;text-decoration:none;color:var(--ink);font-size:15px;padding:6px 12px;border-radius:999px}
+.navlinks a:hover{background:var(--teal-soft)}
+.themebtn{flex:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:14px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+section{padding:64px 0 24px}
+.sec-head{max-width:760px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(28px,4.2vw,40px);line-height:1.3;margin:0 0 10px}
+.sec-head p{margin:0;color:var(--muted);font-size:18px}
+
+/* hero */
+.hero{padding:48px 0 40px;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(34px,5.6vw,60px);line-height:1.2;margin:0 0 18px}
+.hero .lead{font-size:19px;color:var(--muted);margin:0 0 22px;max-width:34em}
+.who{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.who li{background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:4px 14px;font-size:15px}
+.stage{background:var(--paper);border-radius:28px;padding:26px 24px 22px;border:2px solid var(--line);position:relative}
+.stage-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap}
+.stage-title{font-size:15px;color:var(--muted)}
+.switch{display:inline-flex;background:var(--bg);border-radius:999px;padding:4px;border:1px solid var(--line)}
+.switch button{border:0;background:transparent;border-radius:999px;padding:6px 14px;font-size:15px}
+.switch button[aria-pressed="true"].bad{background:var(--orange);color:#fff}
+.switch button[aria-pressed="true"].good{background:var(--teal);color:#fff}
+.bub{max-width:88%;padding:12px 16px;border-radius:20px;margin:10px 0;font-size:17px;line-height:1.6;position:relative}
+.bub.c{background:var(--amber-soft);border-bottom-left-radius:6px}
+.bub.h{margin-left:auto;background:var(--bubble-h);color:var(--bubble-h-ink);border-bottom-right-radius:6px}
+.bub.h.wrong{background:var(--orange)}
+.bub small{display:block;font-size:13px;opacity:.85;margin-top:4px}
+.who-lab{font-size:13px;color:var(--muted);margin:14px 0 -4px}
+.who-lab.r{text-align:right}
+.reaction{font-size:15px;color:var(--muted);border-top:1px dashed var(--line);margin-top:14px;padding-top:12px}
+.stage-nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.dots{display:flex;gap:6px}
+.dots span{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.dots span.on{background:var(--teal)}
+.pill-btn{border:1.5px solid var(--teal);background:transparent;color:var(--teal);border-radius:999px;padding:6px 16px;font-size:15px}
+.pill-btn:hover{background:var(--teal-soft)}
+.swap{animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* definition */
+.def{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:start}
+.quote-block{background:var(--teal);color:#fff;border-radius:28px;padding:30px 30px 26px;font-size:21px;line-height:1.7}
+.quote-block .src{font-size:14px;opacity:.85;margin-top:14px}
+.not-list{background:var(--paper);border-radius:24px;padding:22px 24px;border:2px solid var(--line)}
+.not-list h3{margin:0 0 8px;font-size:22px}
+.not-list ul{margin:0;padding-left:1.2em}
+.not-list li{margin:6px 0}
+
+/* spirit */
+.spirit{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sp{background:var(--paper);border-radius:22px 22px 22px 6px;padding:20px 20px 18px;border:2px solid var(--line)}
+.sp:nth-child(2){border-radius:22px 22px 6px 22px}
+.sp:nth-child(3){border-radius:6px 22px 22px 22px}
+.sp:nth-child(4){border-radius:22px 6px 22px 22px}
+.sp h3{margin:0 0 2px;font-size:24px;color:var(--teal)}
+.sp .en{font-size:13px;color:var(--muted)}
+.sp p{margin:8px 0 10px}
+.sp .say{background:var(--bg);border-radius:12px;padding:8px 12px;font-size:15px}
+.note{font-size:14px;color:var(--muted);margin-top:12px}
+
+/* tasks */
+.tasks{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:36px}
+.task{padding:0 16px 0 0;position:relative}
+.task .num{width:52px;height:52px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-family:"Huninn",sans-serif;font-size:24px;position:relative;z-index:1}
+.tasks::before{content:"";position:absolute;left:26px;right:40px;top:26px;height:3px;background:repeating-linear-gradient(90deg,var(--orange) 0 10px,transparent 10px 18px)}
+.task h3{font-size:24px;margin:14px 0 2px}
+.task .en{font-size:13px;color:var(--muted)}
+.task p{margin:8px 0}
+.task .q{font-size:15px;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:8px 12px}
+
+/* skills */
+.oars{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.sk{background:var(--paper);border-radius:24px;border:2px solid var(--line);padding:22px 24px;display:grid;grid-template-columns:64px 1fr;gap:16px}
+.sk .letter{width:64px;height:64px;border-radius:20px;background:var(--teal-soft);color:var(--teal);font-family:"Huninn",sans-serif;font-size:34px;display:grid;place-items:center}
+.sk h3{margin:0;font-size:22px}
+.sk p{margin:6px 0}
+.ex{display:grid;gap:6px;margin-top:8px}
+.ex div{font-size:15px;padding:6px 12px;border-radius:12px}
+.ex .x{background:var(--orange-soft)}
+.ex .o{background:var(--teal-soft)}
+.ex b{font-weight:700}
+.reflevels{margin-top:22px;background:var(--paper);border-radius:24px;border:2px solid var(--line);padding:22px 24px}
+.reflevels h3{margin:0 0 6px;font-size:22px}
+.lvl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:16px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;color:var(--teal);font-size:15px}
+.epe{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.epe .st{background:var(--amber-soft);border-radius:20px;padding:16px 18px}
+.epe .st h3{margin:0 0 4px;font-size:20px}
+.epe .st p{margin:0;font-size:16px}
+.epe .st .say{margin-top:8px;font-size:15px;background:var(--paper);border-radius:10px;padding:6px 10px}
+
+/* ruler */
+.ruler{margin-top:22px;background:var(--paper);border-radius:24px;border:2px solid var(--line);padding:22px 24px}
+.ruler h3{margin:0 0 4px;font-size:22px}
+.rtabs{display:flex;gap:8px;margin:12px 0}
+.rtabs button{border:1.5px solid var(--line);background:var(--bg);border-radius:999px;padding:5px 14px;font-size:15px}
+.rtabs button[aria-pressed="true"]{background:var(--teal);color:#fff;border-color:var(--teal)}
+.scale{display:grid;grid-template-columns:repeat(11,1fr);gap:4px;margin:12px 0 6px}
+.scale button{border:0;border-radius:10px;padding:10px 0;background:var(--bg);font-family:"Huninn",sans-serif;font-size:19px}
+.scale button[aria-pressed="true"]{background:var(--orange);color:#fff;transform:translateY(-3px)}
+.scale-lab{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.rout{margin-top:14px;display:grid;gap:10px}
+.rout .bub{max-width:100%}
+
+/* change talk */
+.darn{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.dk{background:var(--paper);border-radius:20px;border:2px solid var(--line);padding:16px 18px}
+.dk .tag{display:inline-block;font-size:13px;border-radius:999px;padding:1px 10px;margin-bottom:6px}
+.dk.prep .tag{background:var(--amber-soft);color:var(--ink)}
+.dk.mob .tag{background:var(--teal-soft);color:var(--teal)}
+.dk h3{margin:0;font-size:21px}
+.dk p{margin:4px 0;font-size:15px;color:var(--muted)}
+.dk .q{font-size:16px;margin-top:6px}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.box{background:var(--paper);border-radius:24px;border:2px solid var(--line);padding:22px 24px}
+.box h3{margin:0 0 6px;font-size:22px}
+.box ul{margin:6px 0 0;padding-left:1.2em}
+.box li{margin:6px 0}
+
+/* scenarios */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chips button{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 16px;font-size:16px}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.scn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.scn{background:var(--paper);border-radius:26px;border:2px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.scn-h{padding:18px 22px 10px}
+.scn-field{font-size:13px;display:inline-block;padding:2px 10px;border-radius:999px;background:var(--teal-soft);color:var(--teal);margin-bottom:6px}
+.scn-field.f-ltc{background:var(--amber-soft);color:var(--ink)}
+.scn-field.f-dis{background:var(--orange-soft);color:var(--ink)}
+.scn-field.f-fam{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.scn h3{margin:0;font-size:22px;line-height:1.4}
+.scn .ctx{font-size:15px;color:var(--muted);margin:6px 0 0}
+.scn-body{padding:0 22px 18px;flex:1}
+.scn-body .bub{font-size:16px}
+.skilltag{display:inline-block;font-size:12px;background:rgba(255,255,255,.22);border-radius:6px;padding:0 6px;margin-top:4px}
+.bub.c .skilltag{background:var(--paper)}
+.key{background:var(--bg);border-radius:14px;padding:10px 14px;font-size:15px;margin-top:12px}
+.key b{color:var(--orange)}
+.more{border:0;background:transparent;color:var(--teal);font-size:15px;padding:4px 0;text-decoration:underline}
+
+/* practice */
+.prac{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--paper);border-radius:26px;border:2px solid var(--line);padding:22px 24px}
+.card h3{margin:0 0 4px;font-size:23px}
+.card .sub{margin:0 0 14px;color:var(--muted);font-size:15px}
+.stmt{font-family:"Huninn",sans-serif;font-size:22px;line-height:1.5;background:var(--amber-soft);border-radius:18px 18px 18px 6px;padding:16px 18px;min-height:96px;display:flex;align-items:center}
+.ans{display:flex;gap:10px;margin:14px 0 8px}
+.ans button{flex:1;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:10px;font-size:17px}
+.ans button.picked-ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 14%,var(--paper))}
+.ans button.picked-no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--paper))}
+.fb{font-size:15px;min-height:52px}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:15px;color:var(--muted)}
+.opts{display:grid;gap:8px;margin-top:12px}
+.opts button{text-align:left;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:10px 14px;font-size:16px;line-height:1.55}
+.opts button.picked-ok{border-color:var(--good)}
+.opts button.picked-no{border-color:var(--bad)}
+.opts button .why{display:block;font-size:14px;margin-top:4px;color:var(--muted)}
+.brief{margin-top:18px;background:var(--ink);color:var(--bg);border-radius:26px;padding:24px 26px}
+.brief h3{margin:0 0 4px;font-size:24px}
+.brief ol{margin:10px 0 0;padding-left:1.4em;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.brief li{padding-left:2px}
+.brief li b{display:block;font-family:"Huninn",sans-serif;font-weight:400;font-size:19px;color:var(--amber)}
+.brief li span{font-size:15px;opacity:.9}
+
+/* evidence */
+.ev-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.ev-sum div{background:var(--paper);border-radius:20px;border:2px solid var(--line);padding:16px 18px;font-size:16px}
+.ev-sum b{display:block;font-family:"Huninn",sans-serif;font-weight:400;font-size:20px;color:var(--teal);margin-bottom:4px}
+.ev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.ev{background:var(--paper);border-radius:22px;border:2px solid var(--line);padding:18px 20px}
+.ev .meta{font-size:13px;color:var(--muted)}
+.ev h3{margin:4px 0 8px;font-size:19px;line-height:1.45}
+.ev dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:15px}
+.ev dt{color:var(--teal);font-weight:700}
+.ev dd{margin:0}
+.ev a{font-size:14px;display:inline-block;margin-top:8px}
+
+/* caution */
+.caution{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.caution .box{border-color:var(--orange-soft)}
+
+/* pocket */
+.pocket{background:var(--paper);border-radius:28px;border:3px dashed var(--teal);padding:26px 28px}
+.pocket h3{margin:0 0 12px;font-size:26px}
+.pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pk-grid h4{margin:0 0 4px;font-family:"Huninn",sans-serif;font-weight:400;font-size:19px;color:var(--orange)}
+.pk-grid p,.pk-grid ul{margin:0;font-size:15px}
+.pk-grid ul{padding-left:1.1em}
+.printbtn{margin-top:16px}
+
+footer{padding:40px 0 56px;text-align:center;color:var(--muted);font-size:15px}
+footer .sig{font-family:"Huninn",sans-serif;font-size:18px;color:var(--ink)}
+
+
+/* videos */
+.vpath{background:var(--amber-soft);border-radius:24px;padding:18px 22px;margin-bottom:20px}
+.vpath h3{margin:0 0 6px;font-size:21px}
+.vpath ol{margin:0;padding-left:1.4em}
+.vpath li{margin:4px 0}
+.vfilters{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:16px}
+.vfilters .chips{margin:0}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.vc{background:var(--paper);border:2px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:var(--ink)}
+.vc:hover{border-color:var(--teal)}
+.vthumb{aspect-ratio:16/7;display:grid;place-items:center;position:relative}
+.vthumb.zh{background:var(--teal-soft)} .vthumb.yue{background:var(--amber-soft)} .vthumb.en{background:var(--orange-soft)}
+.vthumb .play{width:54px;height:54px;border-radius:50%;background:var(--paper);display:grid;place-items:center;box-shadow:0 2px 0 var(--line)}
+.vthumb .play::after{content:"";border-left:16px solid var(--orange);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px}
+.vthumb .lang{position:absolute;left:12px;top:10px;font-size:13px;background:var(--paper);border-radius:999px;padding:1px 10px}
+.vthumb .seen{position:absolute;right:12px;top:10px;font-size:13px;background:var(--good);color:#fff;border-radius:999px;padding:1px 10px}
+.vbody{padding:14px 16px 12px;flex:1;display:flex;flex-direction:column}
+.vbody .topic{font-size:13px;color:var(--teal)}
+.vbody h3{margin:2px 0 6px;font-size:18px;line-height:1.45}
+.vbody p{margin:0;font-size:15px;color:var(--muted);flex:1}
+.vbody .ch{font-size:13px;color:var(--muted);margin-top:8px}
+.vact{display:flex;justify-content:space-between;align-items:center;padding:0 16px 14px}
+.vact a{font-size:15px}
+.vact button{border:1.5px solid var(--line);background:var(--bg);border-radius:999px;padding:3px 12px;font-size:14px}
+.vact button[aria-pressed="true"]{background:var(--good);color:#fff;border-color:var(--good)}
+.vlink{display:inline-block;margin-top:10px;font-size:15px}
+@media (max-width:1000px){.vgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.vgrid{grid-template-columns:1fr}}
+
+
+/* profession demos */
+.fw{background:var(--paper);border:2px solid var(--line);border-radius:24px;padding:20px 22px;margin-bottom:22px}
+.fw h3{margin:0 0 4px;font-size:22px}
+.fw .tbl{overflow-x:auto}
+.fw table{min-width:640px}
+.errtag{display:inline-block;font-size:13px;border-radius:999px;padding:1px 10px;background:var(--orange-soft);color:var(--ink);white-space:nowrap}
+.prof-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.prof-chips button{border:1.5px solid var(--line);background:var(--paper);border-radius:16px;padding:8px 14px;font-size:16px;line-height:1.3;text-align:left}
+.prof-chips button small{display:block;font-size:12px;color:var(--muted)}
+.prof-chips button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.prof-chips button[aria-pressed="true"] small{color:#fff;opacity:.85}
+.pcase{background:var(--paper);border:2px solid var(--line);border-radius:26px;margin-bottom:20px;overflow:hidden}
+.pcase-h{padding:18px 22px 12px;border-bottom:1px dashed var(--line)}
+.pcase-h .who2{font-size:13px;color:var(--teal)}
+.pcase-h h3{margin:2px 0 4px;font-size:23px;line-height:1.4}
+.pcase-h p{margin:0;color:var(--muted);font-size:15px}
+.mtabs{display:none;gap:6px;padding:12px 22px 0}
+.mtabs button{flex:1;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:6px;font-size:15px}
+.mtabs button.w[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:#fff}
+.mtabs button.r[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.pair{display:grid;grid-template-columns:1fr 1fr}
+.pcol{padding:14px 22px 16px}
+.pcol.wrongc{background:color-mix(in srgb,var(--orange-soft) 45%,var(--paper))}
+.pcol h4{margin:0 0 4px;font-family:"Huninn",sans-serif;font-weight:400;font-size:19px}
+.pcol.wrongc h4{color:var(--orange)} .pcol.rightc h4{color:var(--teal)}
+.pcol .bub{font-size:16px;max-width:94%}
+.pcol .tagline{display:inline-block;font-size:12px;border-radius:6px;padding:0 6px;margin-top:4px}
+.pcol.wrongc .bub.h{background:var(--orange);color:#fff}
+.pcol.wrongc .tagline{background:rgba(255,255,255,.25)}
+.pcol.rightc .tagline{background:rgba(255,255,255,.22)}
+.result{font-size:15px;border-radius:12px;padding:8px 12px;margin-top:10px;background:var(--paper);border:1px solid var(--line)}
+.pcol.rightc .result{background:var(--teal-soft);border-color:transparent}
+.adjust{padding:14px 22px 18px;border-top:1px dashed var(--line)}
+.adjust h4{margin:0 0 6px;font-family:"Huninn",sans-serif;font-weight:400;font-size:19px}
+.adjust ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.adjust li{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;font-size:15px}
+.adjust li .f{background:var(--orange-soft);border-radius:10px;padding:6px 10px}
+.adjust li .t{background:var(--teal-soft);border-radius:10px;padding:6px 10px}
+.adjust li .ar{color:var(--muted)}
+.selfcheck{background:var(--ink);color:var(--bg);border-radius:24px;padding:20px 24px;margin-top:6px}
+.selfcheck h3{margin:0 0 6px;font-size:22px}
+.selfcheck ul{margin:0;padding-left:1.2em;columns:2;column-gap:28px}
+.selfcheck li{margin:4px 0;break-inside:avoid}
+@media (max-width:760px){
+  .mtabs{display:flex}
+  .pair{grid-template-columns:1fr}
+  .pair[data-show="w"] .rightc{display:none}
+  .pair[data-show="r"] .wrongc{display:none}
+  .adjust li{grid-template-columns:1fr;gap:2px}
+  .adjust li .ar{display:none}
+  .selfcheck ul{columns:1}
+}
+
+/* responsive */
+@media (max-width:1000px){
+  .spirit,.tasks,.darn,.ev-sum{grid-template-columns:repeat(2,1fr)}
+  .tasks{gap:24px}.tasks::before{display:none}
+  .brief ol{grid-template-columns:repeat(2,1fr)}
+  .caution,.pk-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  section{padding:44px 0 12px}
+  .hero,.def,.oars,.twocol,.scn-grid,.prac,.ev-grid,.epe{grid-template-columns:1fr}
+  .hero{gap:28px;padding-top:28px}
+  .spirit,.darn,.ev-sum,.caution,.pk-grid{grid-template-columns:1fr}
+  .tasks{grid-template-columns:1fr}
+  .sk{grid-template-columns:1fr}
+  .brief ol{grid-template-columns:1fr}
+  .scale button{font-size:16px;padding:8px 0}
+  .brand{font-size:17px}
+}
+@media print{
+  .topnav,.hero .stage,.chips,.prac,.printbtn,.themebtn{display:none!important}
+  body{background:#fff;color:#000}
+  section{padding:16px 0}
+  .pocket{break-inside:avoid}
+}
+.print-only-pocket section:not(#pocket),.print-only-pocket .hero{display:none}
+</style>
+</head>
+<body>
+
+<nav class="topnav" aria-label="頁面導覽">
+  <div class="in">
+    <a class="brand" href="#top">動機式晤談</a>
+    <div class="navlinks">
+      <a href="#what">是什麼</a>
+      <a href="#spirit">精神與任務</a>
+      <a href="#skills">核心技巧</a>
+      <a href="#talk">改變語言</a>
+      <a href="#cases">情境示範</a>
+      <a href="#prof">職類示範</a>
+      <a href="#practice">練習</a>
+      <a href="#videos">影片學習</a>
+      <a href="#evidence">研究證據</a>
+      <a href="#caution">使用提醒</a>
+      <a href="#pocket">口袋卡</a>
+    </div>
+    <button class="themebtn" id="themeBtn" aria-label="切換深淺色">深淺色</button>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+
+<!-- HERO -->
+<header class="hero">
+  <div>
+    <h1>讓對方說出<br>自己想改變的理由</h1>
+    <p class="lead">動機式晤談（Motivational Interviewing, MI）是一種談話方式：不靠說服、不靠嚇，而是聽出對方心裡本來就有的改變動機，再陪他走出第一步。這一頁整理了研究證據、核心技巧與實際對話示範，給每天都在陪人改變的助人工作者。</p>
+    <ul class="who">
+      <li>醫師・護理師・藥師・營養師</li><li>OT・PT・語言治療師・心理師</li><li>個管・居服員・照服督導</li><li>社工・身障服務人員</li>
+    </ul>
+  </div>
+  <div class="stage" aria-live="polite">
+    <div class="stage-top">
+      <span class="stage-title">同一句話，兩種回應</span>
+      <div class="switch" role="group" aria-label="回應方式">
+        <button class="bad" id="swBad" aria-pressed="true">糾正反射</button>
+        <button class="good" id="swGood" aria-pressed="false">MI 回應</button>
+      </div>
+    </div>
+    <div id="heroChat"></div>
+    <div class="stage-nav">
+      <div class="dots" id="heroDots"></div>
+      <button class="pill-btn" id="heroNext">換一個情境</button>
+    </div>
+  </div>
+</header>
+
+<!-- WHAT -->
+<section id="what">
+  <div class="sec-head">
+    <h2>MI 是一種「怎麼談改變」的方式</h2>
+    <p>它可以放進你原本就在做的衛教、評估、復能訓練與個案管理裡，不需要另外排一堂課。</p>
+  </div>
+  <div class="def">
+    <div class="quote-block">
+      以合作、以目標為導向的溝通風格，特別留意「改變的語言」。在接納與慈悲的氛圍中，引出並探索對方自己的改變理由，強化他對特定目標的動機與承諾。
+      <div class="src">改寫自 Miller & Rollnick（2023）《Motivational Interviewing》第四版的定義</div>
+    </div>
+    <div class="not-list">
+      <h3>MI 不是這些</h3>
+      <ul>
+        <li>不是一套讓人「乖乖聽話」的話術</li>
+        <li>不是只會點頭、什麼方向都不給</li>
+        <li>不是把正確資訊講得更大聲、更多遍</li>
+        <li>不是跨階段理論（TTM）的另一個名字，兩者可以搭配，但不一樣</li>
+      </ul>
+      <a class="vlink" href="#videos" data-jump="demo">看對照影片：同一個病人，兩種醫師</a>
+      <p class="note">核心假設：人對改變常常是「又想又不想」（矛盾），助人者的工作是陪他把「想」的那一邊說出來、說清楚。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPIRIT + TASKS -->
+<section id="spirit">
+  <div class="sec-head">
+    <h2>四種精神，四個任務</h2>
+    <p>精神是你帶進對話的態度；任務是對話大致會經過的路。第四版把「喚起」精神改稱為「賦能」，並把四個「過程」改稱為「任務」。</p>
+  </div>
+  <div class="spirit">
+    <div class="sp"><h3>夥伴</h3><div class="en">Partnership</div><p>你是某個領域的專家，他是自己人生的專家。一起想，而不是你替他想。</p><div class="say">「我們一起看看，哪個做法最適合你家。」</div></div>
+    <div class="sp"><h3>接納</h3><div class="en">Acceptance</div><p>尊重他的價值、選擇權與優點，也努力理解他的觀點。接納不等於同意。</p><div class="say">「要不要做、怎麼做，最後都由你決定。」</div></div>
+    <div class="sp"><h3>慈悲</h3><div class="en">Compassion</div><p>主動把對方的福祉放在優先，而不是為了達成單位的指標。</p><div class="say">「我在意的是你過得好不好。」</div></div>
+    <div class="sp"><h3>賦能</h3><div class="en">Empowerment</div><p>幫他看見並用上自己已有的力量、經驗和資源；答案多半在他身上。</p><div class="say">「以前遇過難關，你是怎麼撐過來的？」</div></div>
+  </div>
+
+  <div class="tasks" aria-label="四個任務">
+    <div class="task"><div class="num">1</div><h3>投入</h3><div class="en">Engaging・建立關係</div><p>先建立信任與合作關係。沒有投入，後面都走不動。</p><div class="q">「最近生活裡，最讓你困擾的是什麼？」</div></div>
+    <div class="task"><div class="num">2</div><h3>聚焦</h3><div class="en">Focusing・找方向</div><p>一起選出想談的改變目標，可以是他提的，也可以是你提出後他同意的。</p><div class="q">「今天有幾件事可以談，你想先從哪一件開始？」</div></div>
+    <div class="task"><div class="num">3</div><h3>喚起</h3><div class="en">Evoking・引出動機</div><p>引出他自己的改變理由與信心，這是 MI 最獨特的部分。</p><div class="q">「如果做到了，你的生活會有什麼不一樣？」</div></div>
+    <div class="task"><div class="num">4</div><h3>規劃</h3><div class="en">Planning・訂下一步</div><p>當他準備好了，一起訂出具體、做得到的下一步。</p><div class="q">「你覺得第一步可以從哪裡開始？」</div></div>
+  </div>
+  <p class="note">四個任務不一定依序走完，對話中隨時可以回到前一個；關係鬆掉時，就先回到「投入」。</p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-head">
+    <h2>核心技巧：OARS</h2>
+    <p>四個基本功貫穿每一個任務。練熟之後，一次短短的門診或家訪也能用得上。</p>
+  </div>
+  <div class="oars">
+    <div class="sk"><div class="letter">O</div><div><h3>開放式問句</h3><p>讓對方用自己的話多說一點，而不是只回答「有／沒有」。</p>
+      <div class="ex"><div class="x"><b>封閉：</b>「你有每天走路嗎？」</div><div class="o"><b>開放：</b>「走路這件事，這陣子進行得怎麼樣？」</div></div></div></div>
+    <div class="sk"><div class="letter">A</div><div><h3>肯定</h3><p>具體說出對方的努力、優點或價值，不是空泛的「很棒喔」。</p>
+      <div class="ex"><div class="x"><b>空泛：</b>「你好厲害喔！」</div><div class="o"><b>具體：</b>「膝蓋痛成這樣，你還是每週來兩次，很不容易。」</div></div></div></div>
+    <div class="sk"><div class="letter">R</div><div><h3>反映</h3><p>把你聽到的意思說回去，讓對方感覺被聽懂，也聽見自己說了什麼。這是最重要的一項。</p>
+      <div class="ex"><div class="x"><b>問句：</b>「所以你是覺得太累嗎？」</div><div class="o"><b>反映：</b>「一天下來，你已經沒力氣再多做一件事了。」</div></div></div></div>
+    <div class="sk"><div class="letter">S</div><div><h3>摘要</h3><p>把幾段對話串起來，特別收集他說過的改變理由，再交還給他。</p>
+      <div class="ex"><div class="o"><b>摘要：</b>「你擔心再跌倒，也想自己去市場；你提到家裡走廊可以先練。我有漏掉什麼嗎？」</div></div></div></div>
+  </div>
+
+  <div class="reflevels">
+    <h3>反映的深淺</h3>
+    <p class="note" style="margin-top:0">以個案說「我知道要運動，可是下班就累了，哪有時間」為例。</p>
+    <div class="lvl-wrap"><table>
+      <thead><tr><th>類型</th><th>做法</th><th>示範</th></tr></thead>
+      <tbody>
+        <tr><td>簡單反映</td><td>換句話說，貼近原意</td><td>「你下班後很累。」</td></tr>
+        <tr><td>複合反映</td><td>加上沒說出口的意思或感受</td><td>「你其實想動，只是體力已經被工作用完了。」</td></tr>
+        <tr><td>雙面反映</td><td>同時說出矛盾的兩邊，把改變那邊放在後面</td><td>「現在真的很累，同時你也知道運動對你很重要。」</td></tr>
+        <tr><td>放大反映</td><td>稍微誇大維持現狀的那邊，語氣真誠、不諷刺，讓對方自己修正</td><td>「聽起來，運動對你現在完全不可能。」</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><a href="#videos" data-jump="oars">看 OARS 對照示範影片</a></p>
+    <p class="note">實務上常見的方向：反映的次數要比提問多，至少一比一。連續問三個問題，對方就會覺得在被審問。</p>
+  </div>
+
+  <div class="epe" aria-label="資訊交換三步驟">
+    <div class="st"><h3>1. 先問</h3><p>他已經知道什麼、想知道什麼？</p><div class="say">「關於血壓，你已經知道哪些？」</div></div>
+    <div class="st"><h3>2. 再給</h3><p>取得同意後，給簡短、中性的資訊，不下命令。</p><div class="say">「我可以說說其他人試過的方法嗎？」</div></div>
+    <div class="st"><h3>3. 再問</h3><p>問他聽完的想法，把選擇權交回去。</p><div class="say">「聽起來，哪個比較適合你？」</div></div>
+  </div>
+  <p class="note"><a href="#videos" data-jump="info">看「提供訊息三步驟」影片</a>。這叫「引出—提供—引出」（Elicit–Provide–Elicit）。助人者常常必須給衛教資訊，這是讓資訊不變成說教的方法。</p>
+
+  <div class="ruler">
+    <h3>準備度尺規：點一個數字試試看</h3>
+    <p class="note" style="margin:0">問「從 0 到 10，這件事對你有多重要？」或「你有多少信心做到？」重點不在分數，而在追問。</p>
+    <div class="rtabs" role="group" aria-label="尺規類型">
+      <button id="rImp" aria-pressed="true">重要性</button>
+      <button id="rConf" aria-pressed="false">信心</button>
+    </div>
+    <div class="scale" id="scale" role="group" aria-label="0 到 10 分"></div>
+    <div class="scale-lab"><span>完全不</span><span>非常</span></div>
+    <div class="rout" id="rout" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- CHANGE TALK -->
+<section id="talk">
+  <div class="sec-head">
+    <h2>聽出改變語言</h2>
+    <p>研究顯示，對方說出越多改變語言，越可能真的改變。你的任務是聽到它、反映它、讓它再多說一點。</p>
+  </div>
+  <div class="darn">
+    <div class="dk prep"><span class="tag">準備階段</span><h3>渴望</h3><p>Desire：想要、希望</p><div class="q">「我很希望可以自己上廁所。」</div></div>
+    <div class="dk prep"><span class="tag">準備階段</span><h3>能力</h3><p>Ability：可以、做得到</p><div class="q">「如果有人陪，我應該走得到公園。」</div></div>
+    <div class="dk prep"><span class="tag">準備階段</span><h3>理由</h3><p>Reason：因為……所以</p><div class="q">「我不想再讓孫子擔心。」</div></div>
+    <div class="dk prep"><span class="tag">準備階段</span><h3>需要</h3><p>Need：一定要、不得不</p><div class="q">「再不動，真的會越來越退化。」</div></div>
+    <div class="dk mob"><span class="tag">行動階段</span><h3>承諾</h3><p>Commitment：我會、我決定</p><div class="q">「這星期我會每天走十分鐘。」</div></div>
+    <div class="dk mob"><span class="tag">行動階段</span><h3>啟動</h3><p>Activation：願意、準備好了</p><div class="q">「好，我願意試試看。」</div></div>
+    <div class="dk mob"><span class="tag">行動階段</span><h3>已踏出</h3><p>Taking steps：已經做了</p><div class="q">「我昨天有自己走到巷口。」</div></div>
+    <div class="dk" style="border-style:dashed"><h3>怎麼接</h3><p>聽到改變語言時，可以這樣回應：</p><div class="q">追問細節、反映、肯定，或放進摘要裡。例如：「為什麼孫子的感受對你這麼重要？」</div></div>
+  </div>
+
+  <div class="twocol">
+    <div class="box">
+      <h3>聽到維持語言時</h3>
+      <p>像是「我老了，練也沒用」。這不是抗拒，是矛盾的另一半，很正常。</p>
+      <ul>
+        <li>反映它，不要反駁它：「你覺得努力了，也看不到效果。」</li>
+        <li>用雙面反映把改變的那邊放在後面。</li>
+        <li>強調自主：「要不要練，決定權在你。」</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>關係卡住時（不和諧）</h3>
+      <p>對方開始爭辯、打斷、沉默或敷衍，通常是助人者走太快、給太多建議。</p>
+      <ul>
+        <li>退一步，回到「投入」：先聽懂他。</li>
+        <li>坦白調整方向：「我好像講太多了，想聽聽你的看法。」</li>
+        <li>避開爭論，換個角度談他在乎的事。</li>
+      </ul>
+      <a class="vlink" href="#videos" data-jump="talk">看改變語言與維持語言的影片</a>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="sec-head">
+    <h2>情境示範</h2>
+    <p>以下對話都是示範用的簡化版本，每句標出用到的技巧。實際對話會更長、更多來回，重點在看見「方向」。</p>
+  </div>
+  <div class="chips" role="group" aria-label="場域篩選" id="chips"></div>
+  <div class="scn-grid" id="scnGrid"></div>
+</section>
+
+
+<!-- PROFESSIONS -->
+<section id="prof">
+  <div class="sec-head">
+    <h2>各職類示範：錯誤示範與 MI 示範</h2>
+    <p>同一個常見個案，兩種談法並排對照。先看錯誤示範卡在哪裡，再看 MI 示範怎麼調整。專業內容（劑量、處置、訓練參數）仍依各職類專業判斷，這裡示範的是「怎麼談」。</p>
+  </div>
+
+  <div class="fw">
+    <h3>調整框架：常見卡點與改法</h3>
+    <p class="note" style="margin-top:0">錯誤示範中標出的卡點，都可以在這張表找到對應的改法。</p>
+    <div class="tbl"><table>
+      <thead><tr><th>卡點</th><th>聽起來像</th><th>對方常見的反應</th><th>改成</th></tr></thead>
+      <tbody>
+        <tr><td><span class="errtag">糾正反射</span></td><td>「你應該……」「一定要……」</td><td>找更多做不到的理由</td><td>先反映他的處境，再問他怎麼看</td></tr>
+        <tr><td><span class="errtag">恐嚇</span></td><td>「再這樣會洗腎、會截肢」</td><td>焦慮、逃避、不再回診</td><td>喚起他自己在乎的理由</td></tr>
+        <tr><td><span class="errtag">資訊轟炸</span></td><td>一口氣講完所有衛教重點</td><td>點頭說好，回家全忘</td><td>先問、再給一兩點、再問他的想法</td></tr>
+        <tr><td><span class="errtag">爭論</span></td><td>「那是特例」「研究都證明……」</td><td>更堅持原本的說法</td><td>反映他的觀點，不和例外辯</td></tr>
+        <tr><td><span class="errtag">否定感受</span></td><td>「不會啦」「不要怕」</td><td>覺得沒被聽見，關係變冷</td><td>把感受說出來，承認它合理</td></tr>
+        <tr><td><span class="errtag">替他決定</span></td><td>「我幫你申請」「叫你兒子提醒」</td><td>表面接受，實際不配合</td><td>請他提出方法，專業再補選項</td></tr>
+        <tr><td><span class="errtag">搬出規定</span></td><td>「規定就是要這樣」「補助不用很可惜」</td><td>覺得被管、被比較</td><td>連結他的價值與過去的樣子</td></tr>
+        <tr><td><span class="errtag">責備</span></td><td>「你上次說要做，結果呢？」</td><td>羞愧、防衛、隱瞞</td><td>請他解讀結果，肯定已做到的部分</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="prof-chips" role="group" aria-label="選擇職類" id="profChips"></div>
+  <div id="profCases" aria-live="polite"></div>
+
+  <div class="selfcheck">
+    <h3>談完之後，問自己六件事</h3>
+    <ul>
+      <li>剛剛是我說得多，還是他說得多？</li>
+      <li>我的反映有沒有比提問多？</li>
+      <li>改變的理由是他說的，還是我說的？</li>
+      <li>給資訊前，我有先問、先取得同意嗎？</li>
+      <li>下一步是他選的嗎？</li>
+      <li>對方有沒有開始爭辯或沉默？如果有，我在哪一句走太快？</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section id="practice">
+  <div class="sec-head">
+    <h2>小練習</h2>
+    <p>兩個短練習，幫你把耳朵和嘴巴調到 MI 頻道。</p>
+  </div>
+  <div class="prac">
+    <div class="card">
+      <h3>這句話是改變語言嗎？</h3>
+      <p class="sub">判斷個案這句話偏向改變，還是維持現狀。</p>
+      <div class="stmt" id="q1stmt"></div>
+      <div class="ans">
+        <button id="q1c">改變語言</button>
+        <button id="q1s">維持語言</button>
+      </div>
+      <div class="fb" id="q1fb" aria-live="polite"></div>
+      <div class="qfoot"><span id="q1count"></span><button class="pill-btn" id="q1next">下一句</button></div>
+    </div>
+    <div class="card">
+      <h3>選出最好的回應</h3>
+      <p class="sub" id="q2ctx"></p>
+      <div class="stmt" id="q2stmt"></div>
+      <div class="opts" id="q2opts"></div>
+      <div class="qfoot"><span id="q2count"></span><button class="pill-btn" id="q2next">下一題</button></div>
+    </div>
+  </div>
+
+  <div class="brief">
+    <h3>忙碌現場的五分鐘版本</h3>
+    <p style="margin:0;opacity:.85;font-size:15px">門診、家訪、據點活動空檔都用得上。</p>
+    <ol>
+      <li><b>問在乎什麼</b><span>「關於身體，你最在意的是什麼？」</span></li>
+      <li><b>反映一次</b><span>把他的話說回去，讓他知道你聽懂了。</span></li>
+      <li><b>用尺規</b><span>「0 到 10，有多重要？為什麼不是更低？」</span></li>
+      <li><b>問一小步</b><span>「接下來一週，你想先試什麼？」</span></li>
+      <li><b>摘要收尾</b><span>串起他說的理由和計畫，交還給他。</span></li>
+    </ol>
+  </div>
+</section>
+
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="sec-head">
+    <h2>影片學習</h2>
+    <p>用眼睛和耳朵補上文字學不到的部分：語氣、停頓、節奏。點卡片會在 YouTube 開新分頁播放。</p>
+  </div>
+  <div class="vpath">
+    <h3>建議的觀看順序</h3>
+    <ol>
+      <li>先看一組「對照影片」，感受有沒有用 MI 的差別（醫師版、OARS 版各一組）。</li>
+      <li>再看「糾正反射」與「OARS」的說明，對照本頁的核心技巧。</li>
+      <li>最後看完整示範，邊看邊找出改變語言與反映。</li>
+    </ol>
+  </div>
+  <div class="vfilters">
+    <div class="chips" role="group" aria-label="語言篩選" id="vLang"></div>
+    <div class="chips" role="group" aria-label="主題篩選" id="vTopic"></div>
+  </div>
+  <div class="vgrid" id="vGrid"></div>
+  <p class="note">影片皆連到原頻道，版權屬原作者。部分影片為心理諮商、成癮或青少年情境，技巧可直接轉用到醫療、長照與身障服務。英文影片可開啟 YouTube 的自動翻譯字幕。</p>
+</section>
+
+<!-- EVIDENCE -->
+<section id="evidence">
+  <div class="sec-head">
+    <h2>研究怎麼說</h2>
+    <p>MI 在醫療與助人領域已有大量研究。以下整理幾個重點結論，以及與醫療、長照、身心障礙、照顧者相關的代表性研究。</p>
+  </div>
+  <div class="ev-sum">
+    <div><b>多數研究看到效果</b>一篇納入 72 篇隨機對照試驗的統合分析中，約四分之三的研究顯示 MI 有效，生理與心理問題都有。</div>
+    <div><b>短時間也有機會</b>同一篇分析中，15 分鐘的短談約有 64% 的研究有效；接觸次數越多，效果越穩定。</div>
+    <div><b>效果以短期、小到中等為主</b>多篇回顧指出，效果較常出現在介入期間或半年內，長期維持需要後續支持。</div>
+    <div><b>技巧品質很關鍵</b>研究結果差異大，常與執行者是否真的用出 MI 技巧有關，持續練習與回饋很重要。</div>
+  </div>
+  <div class="chips" role="group" aria-label="研究篩選" id="evChips"></div>
+  <div class="ev-grid" id="evGrid"></div>
+  <p class="note">本頁研究摘要整理自各篇文獻的摘要與公開內容，供學習參考；引用於正式報告時，請回到原文確認數據與研究範圍。</p>
+</section>
+
+<!-- CAUTION -->
+<section id="caution">
+  <div class="sec-head">
+    <h2>使用提醒</h2>
+    <p>MI 是好用的談話方式，但有它適合的時機和需要調整的對象。</p>
+  </div>
+  <div class="caution">
+    <div class="box"><h3>安全先於動機</h3><p>遇到自傷、受虐、立即跌倒或醫療急症等風險，先處理安全與通報，再談改變。</p></div>
+    <div class="box"><h3>方向要對他有利</h3><p>MI 的目的是對方的福祉。如果目標只是為了單位績效或讓個案配合，就偏離了精神。</p></div>
+    <div class="box"><h3>尊重「還沒準備好」</h3><p>對方明確表示不想改變時，尊重他的決定、留下開放的門，下次再談。</p></div>
+    <div class="box"><h3>認知或溝通障礙</h3><p>句子短、一次一題、搭配圖卡或手指量尺、多給時間；認知退化較明顯時，對象可轉為家屬與照顧者。</p></div>
+    <div class="box"><h3>搭配而非取代</h3><p>MI 常作為運動、復能、衛教方案的「說話方式」，和原本的專業介入一起使用。</p></div>
+    <div class="box"><h3>需要練習</h3><p>一次工作坊很難學會。錄音回顧、同儕觀摩、督導回饋，都能讓技巧更穩定。</p></div>
+  </div>
+</section>
+
+<!-- POCKET -->
+<section id="pocket">
+  <div class="sec-head">
+    <h2>口袋卡</h2>
+    <p>可以列印下來放在工作證後面。</p>
+  </div>
+  <div class="pocket">
+    <h3>動機式晤談速查</h3>
+    <div class="pk-grid">
+      <div><h4>精神</h4><p>夥伴、接納、慈悲、賦能</p><h4 style="margin-top:12px">任務</h4><p>投入 → 聚焦 → 喚起 → 規劃（可隨時回頭）</p></div>
+      <div><h4>OARS</h4><ul><li>開放式問句：多說一點</li><li>肯定：具體說出努力</li><li>反映：比提問多</li><li>摘要：收集改變理由</li></ul></div>
+      <div><h4>好用的問句</h4><ul><li>「如果做到了，生活會有什麼不同？」</li><li>「0 到 10 有多重要？為什麼不是更低？」</li><li>「以前你是怎麼做到難的事？」</li><li>「第一步可以從哪裡開始？」</li></ul></div>
+      <div><h4>改變語言</h4><p>渴望、能力、理由、需要、承諾、啟動、已踏出</p></div>
+      <div><h4>給資訊</h4><p>先問 → 取得同意再給 → 再問他的想法</p></div>
+      <div><h4>避開</h4><p>糾正反射、連續提問、爭辯、貼標籤、急著給建議</p></div>
+    </div>
+    <button class="pill-btn printbtn" id="printBtn">列印口袋卡</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="sig">設計者｜愛迪樂 鍾孟修 職能治療師</div>
+  <div>本頁為助人工作者的學習資源，不取代正式的 MI 訓練與督導。</div>
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  const btn=document.getElementById('themeBtn');
+  let saved=null; try{saved=localStorage.getItem('mi-theme')}catch(e){}
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+  btn.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme');
+    const dark=cur? cur==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    const next=dark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('mi-theme',next)}catch(e){}
+  });
+})();
+
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+/* ---------- hero ---------- */
+const heroData=[
+  {c:'醫生說我要多走路，可是膝蓋會痛，我就懶得動了。',
+   bad:'膝蓋痛更要動啊！不動肌肉會萎縮，到時候更痛。你每天至少要走三十分鐘。',
+   badR:'對方感覺被責備，常見反應是「你不懂啦」，接著找更多不動的理由。',
+   good:'膝蓋痛讓走路變得很辛苦，可是你也還記得醫生的提醒，心裡有在想這件事。',
+   goodR:'對方感覺被理解，比較可能接著說：「對啊，其實我也想走，只是不知道怎麼走才不會痛。」'},
+  {c:'我媽只讓我照顧，外面的人來她會鬧，我自己來就好。',
+   bad:'你這樣會累垮的，一定要申請喘息服務，不然你倒了誰顧她？',
+   badR:'家屬覺得自己的判斷被否定，更堅持「我自己來」。',
+   good:'你很了解媽媽，也很擔心她換人會不安。同時，你一個人撐了很久。',
+   goodR:'家屬的擔心被接住，才有空間說出：「其實我也累了，只是不放心。」'},
+  {c:'練這些有什麼用，我又不會再走路了。',
+   bad:'不會啦，要有信心！只要努力一定會進步，你看隔壁床都在練。',
+   badR:'空泛的鼓勵和比較，讓人覺得沒被聽見，也更沒力氣。',
+   good:'你付出很多，卻看不到想要的結果，很灰心。你心裡真正想回到的是什麼樣的生活？',
+   goodR:'對方開始談自己在乎的事，例如回到工作或自己出門，練習就有了方向。'}
+];
+let heroI=0, heroMode='bad';
+const heroChat=document.getElementById('heroChat'), heroDots=document.getElementById('heroDots');
+function renderHero(){
+  const d=heroData[heroI];
+  const good=heroMode==='good';
+  heroChat.innerHTML=`
+    <div class="who-lab">個案</div>
+    <div class="bub c">${esc(d.c)}</div>
+    <div class="who-lab r">助人者</div>
+    <div class="bub h ${good?'':'wrong'} swap">${esc(good?d.good:d.bad)}</div>
+    <div class="reaction swap">${esc(good?d.goodR:d.badR)}</div>`;
+  heroDots.innerHTML=heroData.map((_,i)=>`<span class="${i===heroI?'on':''}"></span>`).join('');
+  document.getElementById('swBad').setAttribute('aria-pressed',!good);
+  document.getElementById('swGood').setAttribute('aria-pressed',good);
+}
+document.getElementById('swBad').onclick=()=>{heroMode='bad';renderHero()};
+document.getElementById('swGood').onclick=()=>{heroMode='good';renderHero()};
+document.getElementById('heroNext').onclick=()=>{heroI=(heroI+1)%heroData.length;heroMode='bad';renderHero()};
+renderHero();
+
+/* ---------- ruler ---------- */
+let rType='imp', rVal=null;
+const scale=document.getElementById('scale'), rout=document.getElementById('rout');
+for(let i=0;i<=10;i++){const b=document.createElement('button');b.textContent=i;b.setAttribute('aria-pressed','false');b.onclick=()=>{rVal=i;renderRuler()};scale.appendChild(b)}
+function renderRuler(){
+  [...scale.children].forEach((b,i)=>b.setAttribute('aria-pressed',i===rVal));
+  document.getElementById('rImp').setAttribute('aria-pressed',rType==='imp');
+  document.getElementById('rConf').setAttribute('aria-pressed',rType==='conf');
+  if(rVal===null){rout.innerHTML='<div class="note" style="margin:0">點一個分數，看看助人者可以怎麼接。</div>';return}
+  const word=rType==='imp'?'重要':'有信心';
+  let lines=[];
+  if(rVal===0){
+    lines=[`「現在對你來說，這件事一點都不${rType==='imp'?'重要':'可能'}。」<small>先反映，接納他的位置</small>`,
+           `「什麼情況下，你可能會開始考慮它？」<small>留一扇門，不急著推</small>`];
+  }else{
+    const low=Math.max(0,rVal-3);
+    lines=[`「是 ${rVal}，不是 ${low}。是什麼讓你覺得它有這麼${word}？」<small>問「為什麼不是更低」，引出改變語言</small>`,
+           rVal<10?`「要發生什麼事，會讓它從 ${rVal} 變成 ${rVal+1}？」<small>找出下一步需要的條件</small>`
+                  :`「已經是 10 了！是什麼讓你這麼${word}？」<small>肯定並請他多說</small>`];
+    if(rType==='conf') lines.push(`「以前有沒有哪次，你做到了一件原本沒把握的事？」<small>喚起過去的成功經驗</small>`);
+  }
+  rout.innerHTML=lines.map(t=>`<div class="bub h swap">${t}</div>`).join('')+
+    `<div class="note" style="margin:0">避免問「為什麼只有 ${rVal}？」，那會讓他開始解釋自己為什麼做不到。</div>`;
+}
+document.getElementById('rImp').onclick=()=>{rType='imp';renderRuler()};
+document.getElementById('rConf').onclick=()=>{rType='conf';renderRuler()};
+renderRuler();
+
+/* ---------- scenarios ---------- */
+const fields={med:'醫療',ltc:'長照',dis:'身心障礙',fam:'家屬照顧者'};
+const fieldCls={med:'',ltc:'f-ltc',dis:'f-dis',fam:'f-fam'};
+const scns=[
+ {f:'med',t:'門診衛教：血糖控制與運動',ctx:'60 歲的李先生糖化血色素偏高，已聽過很多次「要運動」。衛教時間只有十分鐘。',
+  d:[['h','今天時間不長，想先聽聽你：關於血糖，你自己最在意的是什麼？','開放式問句'],
+     ['c','我知道要運動啦，可是下班就累了，哪有時間。'],
+     ['h','你很清楚運動的重要，只是一天下來真的沒力氣了。','複合反映'],
+     ['c','對啊……不過我爸後來洗腎，我不想跟他一樣。'],
+     ['h','你不想走爸爸那條路，這對你很重要。','反映改變語言'],
+     ['h','如果一週能擠出一點時間，你覺得最可能是什麼時候、做什麼？','喚起 → 規劃']],
+  k:'不再重複運動的好處。抓住「不想跟爸爸一樣」這句改變語言，把它放大。'},
+ {f:'med',t:'中風後早期：「做了也沒用」',ctx:'中風三週的王伯伯，復健時常說累，想回床上躺。',
+  d:[['c','做這些有什麼用，手也不會好了。'],
+     ['h','練了這麼多，手還是不太聽話，讓你很灰心。','反映情緒'],
+     ['c','以前我自己騎車去市場，現在連扣子都扣不好。'],
+     ['h','你一直是很能自己打理生活的人。','肯定'],
+     ['h','如果這隻手能再多做回一件事，你最希望是哪一件？','喚起渴望'],
+     ['c','自己吃飯吧，不想讓太太餵。'],
+     ['h','那今天的練習就朝「自己拿湯匙」設計，你覺得呢？','聚焦・夥伴']],
+  k:'中風早期的 MI 研究，主要看到的是情緒與調適的改善。先接住灰心，再把練習連到他想找回的生活。'},
+ {f:'med',t:'社區衛教：高血壓與減鹽',ctx:'陳太太血壓偏高，很愛吃醃漬小菜。',
+  d:[['h','關於飲食跟血壓，你已經知道哪些？','先問'],
+     ['c','醫生說要少鹽，可是不鹹就吃不下飯。'],
+     ['h','你知道方向，只是味道對你來說很重要。','反映'],
+     ['h','我可以分享其他長輩試過的做法嗎？','請求同意'],
+     ['c','好啊。'],
+     ['h','有人用醋、檸檬、蔥蒜提味，鹽少一點，味道還在。','再給'],
+     ['h','你聽了覺得，哪個比較可能放進你家的菜？','再問'],
+     ['c','醋可以，我本來就喜歡酸的。']],
+  k:'先問、再給、再問。給資訊前取得同意，最後把選擇交還給她。'},
+ {f:'ltc',t:'居家復能：不想出門走路',ctx:'85 歲林奶奶的復能目標是自己走到巷口，但最近都說不想出門。',
+  d:[['c','老了啦，走不動，出去幹嘛。'],
+     ['h','最近腳比較沒力，出門變成一件很累的事。','簡單反映'],
+     ['c','對啊，以前我每天去廟口跟人聊天。'],
+     ['h','廟口那些朋友，對你來說很重要。','反映價值'],
+     ['c','好久沒看到阿好了，不知道她還好不好。'],
+     ['h','如果有一天能走到廟口看看阿好，那會是什麼感覺？','喚起'],
+     ['h','從 0 到 10，你有多想再去廟口一次？','準備度尺規']],
+  k:'把「走路練習」連到她在乎的人與地方，而不是步數。'},
+ {f:'ltc',t:'輔具：不肯用助行器',ctx:'72 歲張伯伯跌倒過一次，卻堅持不用助行器。',
+  d:[['c','用那個像殘廢一樣，被鄰居看到很丟臉。'],
+     ['h','你很在意在鄰居面前的樣子，不想被當成病人。','反映'],
+     ['h','另一方面，上次跌倒也讓你嚇了一跳。','雙面反映'],
+     ['c','是啦，躺了兩個禮拜，孫子都不敢讓我抱。'],
+     ['h','你想走得穩，也想保有面子。有沒有辦法兩個都顧到？','喚起・自主'],
+     ['c','在家裡用可以，出門先不要。'],
+     ['h','先從家裡開始，這是你自己選的做法。','肯定自主']],
+  k:'不和他爭輔具有多安全，讓他自己提出折衷方案，執行的意願會高很多。'},
+ {f:'ltc',t:'居家服務：拒絕洗澡',ctx:'居服員服務的李阿嬤，常常拒絕洗澡。',
+  d:[['c','我昨天洗過了啦！'],
+     ['h','你覺得自己很乾淨，不需要別人一直提醒。','反映'],
+     ['h','洗澡的時候，最讓你不舒服的是哪個部分？','開放式問句'],
+     ['c','浴室很冷，而且被人家看光光。'],
+     ['h','又冷又不自在。如果先把浴室弄暖，毛巾一直幫你蓋著，要不要試試看？','摘要 → 規劃']],
+  k:'拒絕背後常有具體原因。先找原因，不先說服。若長輩有認知障礙，句子更短，並以尊重與安全感為主。'},
+ {f:'dis',t:'脊髓損傷：住院復健參與',ctx:'28 歲的脊髓損傷者住院中，常常取消治療。',
+  d:[['c','練這些又站不起來，有什麼意義。'],
+     ['h','你想要的是真正回到生活，不是在治療室裡做動作。','複合反映'],
+     ['c','我只想回去工作。'],
+     ['h','回去工作對你很重要。你以前做什麼？','反映 + 開放式問句'],
+     ['c','電腦繪圖。'],
+     ['h','那我們把練習跟「自己上下輪椅、在電腦前坐穩兩小時」連在一起，你覺得有幫助嗎？','聚焦・夥伴']],
+  k:'有研究訓練 PT、OT 使用 MI，目的就是提升住院復健的參與度。治療目標連到他的職業角色，練習才有意義。'},
+ {f:'dis',t:'智能障礙成人：含糖飲料',ctx:'30 歲、輕度智能障礙的小安，每天喝三杯手搖飲。',
+  d:[['h','你最喜歡喝哪一種？','開放式問句（簡短）'],
+     ['c','珍奶！'],
+     ['h','珍奶讓你很開心。','簡單反映'],
+     ['h','上次看醫生，醫生說了什麼？','開放式問句'],
+     ['c','會胖……牙齒會壞。'],
+     ['h','你記得很清楚。','肯定'],
+     ['h','（伸出手指 1 到 5）你想少喝一點嗎？比給我看。','視覺化尺規'],
+     ['c','（比 3）'],
+     ['h','3 耶，有一點想。為什麼不是 1？','追問'],
+     ['c','因為我想穿好看的衣服。']],
+  k:'MI 的精神不變，說法變簡單：句子短、一次一題、用手指或圖卡、多肯定，把選擇權留給本人。'},
+ {f:'dis',t:'精神障礙者自立生活：作息調整',ctx:'在社區自立生活的阿明，最近日夜顛倒。',
+  d:[['c','晚上睡不著，白天就起不來，反正也沒事做。'],
+     ['h','白天沒有想做的事，晚上又睡不著，日子好像卡住了。','複合反映'],
+     ['c','以前我很會煮咖啡。'],
+     ['h','你有一個拿手的東西。','肯定'],
+     ['h','如果白天有一件跟咖啡有關的事在等你，會不會比較想起床？','喚起'],
+     ['c','如果是早上十點，或許可以。'],
+     ['h','十點，好。你想先試幾天？','規劃']],
+  k:'用他在乎、做得好的活動當作改變的理由，作息調整就不只是「應該早睡早起」。'},
+ {f:'fam',t:'失智症家屬：不願使用喘息服務',ctx:'獨自照顧失智母親一年多的女兒。',
+  d:[['c','我媽只認得我，別人照顧她會亂。'],
+     ['h','你很了解媽媽，也擔心別人照顧不好。','反映'],
+     ['h','這一年多，你幾乎沒有休息過。','肯定付出'],
+     ['c','上個月我自己也住院了……'],
+     ['h','照顧媽媽很重要，你的身體也開始提醒你了。','雙面反映'],
+     ['h','如果真的要休息，你最放心的方式會是什麼樣子？','喚起・自主'],
+     ['c','一開始我在旁邊陪著，讓她先熟悉那個人。']],
+  k:'尊重家屬的顧慮，讓她自己設計一個安心的做法，而不是直接推服務。'},
+ {f:'fam',t:'中風家屬：什麼都幫忙做',ctx:'太太每天幫中風的先生穿衣服，擔心他動作太慢。',
+  d:[['c','他動作太慢了，我幫他穿比較快。'],
+     ['h','你想讓早上順一點，大家都不要太趕。','反映'],
+     ['h','你之前也說過，希望他以後能自己多做一點。','雙面反映'],
+     ['c','是啊，我總不能顧他一輩子。'],
+     ['h','你覺得哪一件事，最適合先讓他自己來？','喚起 → 規劃'],
+     ['c','穿襪子吧，那個他其實可以。']],
+  k:'家屬是改變的重要夥伴。引出家屬自己的理由，比告訴她「不要代勞」更有效。'}
+];
+let scnF='all';
+const chips=document.getElementById('chips'), grid=document.getElementById('scnGrid');
+function renderChips(){
+  const opts=[['all','全部'],...Object.entries(fields)];
+  chips.innerHTML=opts.map(([k,v])=>`<button data-k="${k}" aria-pressed="${scnF===k}">${v}</button>`).join('');
+  chips.querySelectorAll('button').forEach(b=>b.onclick=()=>{scnF=b.dataset.k;renderChips();renderScn()});
+}
+function renderScn(){
+  const list=scns.filter(s=>scnF==='all'||s.f===scnF);
+  grid.innerHTML=list.map(s=>`
+   <article class="scn">
+     <div class="scn-h"><span class="scn-field ${fieldCls[s.f]}">${fields[s.f]}</span><h3>${esc(s.t)}</h3><p class="ctx">${esc(s.ctx)}</p></div>
+     <div class="scn-body">
+       ${s.d.map(([w,t,tag])=>`<div class="bub ${w==='h'?'h':'c'}">${esc(t)}${tag?`<br><span class="skilltag">${esc(tag)}</span>`:''}</div>`).join('')}
+       <div class="key"><b>關鍵：</b>${esc(s.k)}</div>
+     </div>
+   </article>`).join('');
+}
+renderChips();renderScn();
+
+
+/* ---------- profession demos ---------- */
+const profs={
+ md:'醫師',rn:'護理師',ph:'藥師',rd:'營養師',ot:'職能治療師',pt:'物理治療師',st:'語言治療師',
+ dent:'牙醫師・口腔衛生',psy:'心理師',sw:'社工師',cm:'照專・個管師',hca:'居服員・照服員'
+};
+const pc=[
+ {p:'md',t:'門診：血糖數字又變高',ctx:'60 歲男性，糖化血色素比上次高，門診時間只有幾分鐘。',
+  w:[['h','數字又變高了，你上次說要控制，結果呢？','責備'],['c','最近比較忙……'],
+     ['h','再這樣下去會洗腎、截肢。甜的不要吃、飯減半、每天走一萬步。','恐嚇＋資訊轟炸'],['c','好啦好啦。']],
+  wr:'表面答應，內心防衛；一次太多建議，回家照舊。',
+  r:[['h','數字比上次高一點，你自己看到有什麼想法？','開放式問句'],['c','最近比較忙，吃得很亂。'],
+     ['h','工作一忙，吃飯就顧不了。','反映'],
+     ['h','血糖控制有很多面向，你覺得哪一個最可能先動？','聚焦・讓他選'],
+     ['c','晚餐吧，我都很晚吃又吃很多。'],['h','晚餐是你自己挑的起點。下次回診前，你想先試什麼？','喚起 → 規劃']],
+  rr:'個案自己選了起點，承諾的是他說出口的計畫。',
+  a:[['指出失敗','請他解讀數字'],['用後果嚇他','讓他挑一件可以先動的事'],['一次給五個建議','只談他選的那一件']]},
+ {p:'md',t:'門診：談戒菸',ctx:'50 多歲男性，抽菸三十年，因咳嗽就診。',
+  w:[['h','抽菸對肺很不好，你一定要戒。','糾正反射'],['c','我爸抽到九十歲也沒事。'],
+     ['h','那是特例，研究都證明抽菸會……','爭論'],['c','反正我現在沒有想戒。']],
+  wr:'越爭論，個案越站穩「不戒」的那一邊。',
+  r:[['h','抽菸這件事，你自己怎麼看？','開放式問句'],['c','我爸抽到九十歲也沒事。'],
+     ['h','在你家，抽菸好像沒帶來什麼壞處。','反映'],['c','不過……最近爬樓梯會喘。'],
+     ['h','爬樓梯會喘，讓你有點在意。','反映改變語言'],
+     ['h','如果哪天想少抽一點，你覺得會是因為什麼？','喚起']],
+  rr:'不和例外辯，反映之後，個案自己說出了矛盾的另一邊。',
+  a:[['反駁他的例子','先反映他的觀點'],['替他說戒菸的理由','等他說出「會喘」並放大它']]},
+ {p:'rn',t:'出院衛教：心衰竭回家要量體重',ctx:'70 歲女性因心衰竭住院，明天出院。',
+  w:[['h','回家每天早上量體重、水不能喝太多、鹽要少、腳腫要注意、藥要按時吃……這張單子回去要看喔。','資訊轟炸'],
+     ['c','好……'],['h','有沒有問題？','封閉式問句'],['c','沒有。']],
+  wr:'資訊太多記不住，「沒有問題」其實是不知道從何問起。',
+  r:[['h','回家之後，你最擔心的是什麼？','開放式問句'],['c','怕又喘到住院。'],
+     ['h','你很不想再住院一次。','反映'],
+     ['h','有一個方法可以提早發現狀況，我可以說明嗎？','請求同意'],['c','好。'],
+     ['h','每天早上量體重，如果突然變重，可能是水分累積，要提早回來看。','再給'],
+     ['h','你覺得在家要怎麼做，才會記得每天量？','再問'],['c','家裡沒有體重計，我請女兒買，放在廁所門口。']],
+  rr:'衛教掛在她最在意的事情上，方法也是她自己想的。',
+  a:[['一次講完所有重點','先問最擔心什麼，給一兩個最關鍵的'],['問「有沒有問題」','問「回家要怎麼做」，請她說回來']]},
+ {p:'rn',t:'居家護理：家屬晚上不想起來幫忙翻身',ctx:'臥床長輩有壓傷風險，女兒白天上班、晚上獨自照顧。',
+  w:[['h','一定要兩小時翻一次身，不然長壓瘡會更麻煩，到時候你們要負責。','恐嚇＋責備'],
+     ['c','我們晚上也要睡覺啊！你們又不用顧。']],
+  wr:'家屬覺得被指責，開始對立。',
+  r:[['h','晚上要起來好幾次，真的很累。','反映'],['h','你們現在白天和晚上是怎麼分工的？','開放式問句'],
+     ['c','白天有人顧，晚上只有我一個。'],['h','你下班還要接手，撐了很多事。','肯定'],
+     ['h','有沒有一種安排，既能保護爸爸的皮膚，又讓你晚上睡得了？我們一起想。','夥伴'],
+     ['c','睡前跟半夜各一次可以嗎？'],['h','這是個起點。我再說說可以搭配的減壓方法，你看哪個適合。','先接住再補充專業']],
+  rr:'專業標準沒有被放棄，而是和家屬一起找出做得到的版本。',
+  a:[['搬出標準、要求負責','先承認照顧負荷'],['護理師給答案','家屬先提方案，護理師再補專業選項']]},
+ {p:'ph',t:'社區藥局：長輩常忘記按時用藥',ctx:'80 歲獨居長者，領慢性處方箋時說常常漏吃。',
+  w:[['h','這個一定要每天吃，不能自己停，不然中風怎麼辦？','恐嚇'],['c','我記性不好啦。'],
+     ['h','那叫你兒子每天打電話提醒你。','替他決定'],['c','他很忙，不要麻煩他。']],
+  wr:'方法是藥師想的，長輩不願意用。',
+  r:[['h','平常吃藥這件事，對你來說順不順？','開放式問句'],['c','常常忘記，記性不好啦。'],
+     ['h','事情一多，就容易漏掉。','反映'],['h','有沒有哪個時段比較少忘？','找已經做得到的'],
+     ['c','早上配早餐就會記得，晚上那包常忘。'],
+     ['h','早上的方法對你很有效。晚上可以借用同一招嗎？','肯定 → 喚起'],['c','放在電視遙控器旁邊好了，我每天晚上都看新聞。']],
+  rr:'提醒方法來自長輩自己的生活習慣，比較能持續。用藥內容的調整仍回到醫師與藥師的專業。',
+  a:[['用後果提醒重要性','先找他已經做得到的時段'],['替他安排提醒的人','請他設計適合自己的方法']]},
+ {p:'rd',t:'衰弱長者：蛋白質吃不夠',ctx:'82 歲女性體重下降，營養評估後蛋白質攝取不足。',
+  w:[['h','你蛋白質不夠，每餐要吃一個手掌大的肉，再加一杯牛奶。','資訊轟炸'],['c','我牙齒不好，肉咬不動。'],
+     ['h','那就吃軟一點的啊，豆腐、蛋都可以。','急著解決'],['c','……我吃一點就飽了。']],
+  wr:'營養師一直給答案，長輩的困擾沒有被真正聽到。',
+  r:[['h','這陣子吃飯，你覺得最困擾的是什麼？','開放式問句'],['c','牙齒不好、肉咬不動，吃一點就飽。'],
+     ['h','想吃，可是牙口跟胃口都不配合。','複合反映'],['h','你以前最喜歡吃什麼？','開放式問句'],
+     ['c','我媽媽做的蒸蛋，滑滑的。'],['h','蒸蛋滑順，也是很好的蛋白質來源。一天裡，什麼時候最容易加一碗？','連結喜好 → 規劃'],
+     ['c','下午三點吧，那時候會有點餓。']],
+  rr:'從長輩的喜好與節奏出發，建議變成她會想吃的東西。',
+  a:[['給標準份量','先聽吃不下的原因'],['營養師列清單','從她喜歡的食物找起點']]},
+ {p:'ot',t:'中風後：不想用患側手',ctx:'65 歲男性左側偏癱，日常都只用右手。',
+  w:[['h','你要多用左手，一直用右手，左手永遠不會好。','糾正反射＋恐嚇'],['c','用左手很慢，弄得到處都是。'],
+     ['h','慢也要練，這是為你好。','說教'],['c','……']],
+  wr:'沉默代表關係卡住了，練習變成治療師的事。',
+  r:[['h','用左手很慢、又弄得亂七八糟，難怪會不想用。','反映'],
+     ['h','在家裡，有沒有哪件事你很想再用雙手做？','喚起渴望'],['c','以前客人來，都是我泡茶。'],
+     ['h','泡茶是你招待朋友的方式。','反映價值'],
+     ['h','如果先讓左手負責扶茶杯、右手倒水，你覺得試試看如何？','規劃・小步'],['c','扶杯子應該可以。']],
+  rr:'練習連到有意義的生活角色，左手有了具體的任務。',
+  a:[['用「會退化」推他練','找他想找回的生活角色'],['要求整隻手都用','從做得到的小角色開始']]},
+ {p:'ot',t:'居家環境：拒絕在浴室裝扶手',ctx:'76 歲男性，上個月在浴室差點滑倒。',
+  w:[['h','浴室一定要裝扶手，跌倒骨折就麻煩了。有補助，不裝太可惜。','恐嚇＋搬出規定'],
+     ['c','裝那個醜死了，我又還沒老到那樣。']],
+  wr:'扶手被看成「變老」的象徵，越勸越抗拒。',
+  r:[['h','你覺得自己還很有能力，不想家裡看起來像病房。','反映'],
+     ['h','同時，上次在浴室差點滑倒，也讓你嚇了一跳。','雙面反映'],['c','是啊，那次真的嚇死。'],
+     ['h','有沒有一種做法，可以讓浴室安全，又不會破壞你家的樣子？','喚起・自主'],
+     ['c','如果顏色跟磁磚一樣，看起來不明顯，就還好。'],['h','這個條件很清楚，我可以帶幾種款式給你挑。','專業補上選項']],
+  rr:'先尊重自我形象，再由他提出可接受的條件，OT 依條件提供選項。',
+  a:[['把扶手講成「安全必需」','先接住他對自己的看法'],['推銷補助','讓他說出可以接受的條件']]},
+ {p:'pt',t:'膝關節置換後：回家沒做運動',ctx:'68 歲女性術後一個月，膝關節角度進步有限。',
+  w:[['h','回家都沒做運動對不對？角度才這樣，以後會卡住。今天開始每天三組。','責備＋恐嚇'],
+     ['c','很痛啊，你又不知道有多痛。','不和諧出現']],
+  wr:'疼痛沒被理解，對方開始反擊。',
+  r:[['h','回家之後，運動進行得怎麼樣？','開放式問句'],['c','很痛，做一下就不想做了。'],
+     ['h','痛到讓你很想放棄。','反映'],['h','當初決定開刀，你最希望換完膝蓋能做什麼？','喚起'],
+     ['c','想帶孫子去公園。'],['h','帶孫子去公園，是你忍痛開刀的理由。','反映改變語言'],
+     ['h','我們一起看看，怎麼做比較不那麼痛，又能往公園前進。','夥伴・規劃']],
+  rr:'先承認疼痛，再把練習連回她開刀的初衷；疼痛處理與運動調整一起討論。',
+  a:[['質問有沒有做','先問進行得怎麼樣'],['用「會卡住」施壓','回到她當初開刀的目標']]},
+ {p:'pt',t:'跌倒後：害怕下床走路',ctx:'80 歲男性跌倒住院後，拒絕練習行走。',
+  w:[['h','不要怕，我扶著你，不會跌的，來走走看。','否定感受'],['c','我不要，上次就是這樣跌的。']],
+  wr:'「不要怕」沒有讓害怕消失，反而讓他更退縮。',
+  r:[['h','跌過一次，那種害怕一直都在。','反映'],['c','對啊，現在下床腳都會抖。'],
+     ['h','害怕其實是在保護你。','重新框架'],['h','0 到 10，你對自己扶著東西走到房門口有多少信心？','信心尺規'],
+     ['c','3 吧。'],['h','3，不是 0。是什麼讓你還有 3？','追問'],
+     ['c','在家裡扶著牆，我其實可以。'],['h','扶著牆你做得到。那我們就從扶著牆走到門口開始。','肯定 → 規劃']],
+  rr:'害怕被當成合理反應，信心尺規找出了他已有的能力。',
+  a:[['說「不要怕」','把害怕說出來並接納'],['直接要他走','用信心尺規找出做得到的起點']]},
+ {p:'st',t:'吞嚥困難：不願喝增稠的水',ctx:'78 歲男性中風後有吞嚥困難，需要調整液體濃稠度。',
+  w:[['h','你吞嚥有問題，一定要喝稠一點，不然嗆到會得肺炎。','糾正反射＋恐嚇'],
+     ['c','那個糊糊的很難喝，我寧願不要喝。'],['h','為了你好，不喝不行。','說教']],
+  wr:'個案選擇少喝水，反而增加其他風險。',
+  r:[['h','稠稠的水喝起來很不習慣。','反映'],['c','像在喝漿糊。'],
+     ['h','喝水、吃飯本來是享受，現在變成負擔。','複合反映'],
+     ['h','對你來說，吃東西最重要的是什麼？','喚起價值'],['c','跟家人一起吃飯，吃得出味道。'],
+     ['h','那我們一起找，怎麼讓食物安全，又保留味道，還能一起上桌。','夥伴']],
+  rr:'安全與生活品質一起顧，個案願意繼續和治療師找方法。',
+  a:[['只講安全','也接住吃喝的意義'],['要求照做','一起找安全又能接受的版本']]},
+ {p:'st',t:'失語症家屬：一直替長輩把話說完',ctx:'太太在先生說話卡住時，總是立刻幫他說完。',
+  w:[['h','你不要一直幫他講，他要自己講才會進步。','糾正反射'],
+     ['c','他講很久，大家都在等，我看了很急。']],
+  wr:'家屬覺得被指責，下次在治療師面前更緊張。',
+  r:[['h','看他說得那麼辛苦，你很想幫他一把。','反映'],['c','對，我看了很不忍心。'],
+     ['h','你很心疼他。','反映情緒'],['h','他自己把話說出來的時候，是什麼樣子？','喚起'],
+     ['c','他會很開心，好像以前的他回來了。'],
+     ['h','那在家裡，哪個時間比較不趕，可以讓他慢慢說？','規劃'],['c','吃完晚飯吧，那時候沒事。']],
+  rr:'家屬的「代勞」被理解成心疼，她自己找到可以等待的時間。',
+  a:[['糾正家屬的行為','先理解行為背後的心意'],['要求每次都等','先找一個不趕的時段']]},
+ {p:'dent',t:'長者：不想每天清潔假牙',ctx:'85 歲女性戴活動假牙，口腔清潔狀況不佳。',
+  w:[['h','假牙每天都要拿出來刷，不然細菌很多，吸入性肺炎很危險。','恐嚇'],
+     ['c','拿出來很麻煩。'],['h','再麻煩也要做。','說教']],
+  wr:'麻煩的原因沒被問到，所以也不會被解決。',
+  r:[['h','拿進拿出很麻煩。','反映'],['c','手不靈活，常常掉到地上。'],
+     ['h','手不方便，清假牙變成苦差事。','反映'],
+     ['h','戴假牙的時候，你最在意的是什麼？','開放式問句'],
+     ['c','會有味道，不好意思跟人家講話。'],
+     ['h','你很在意跟人說話時的樣子。如果有比較省力的清潔方法，讓味道少一點，你願意試試看嗎？','連結價值 → 請求同意']],
+  rr:'找到真正的困難（手不靈活）與她在乎的事（社交），清潔有了理由，也有了調整方向。',
+  a:[['講感染風險','先問麻煩在哪裡'],['要求照做','連結她在乎的社交與形象']]},
+ {p:'psy',t:'照顧者：撐不住了卻不肯求助',ctx:'照顧失智母親三年的兒子，被轉介來談。',
+  w:[['h','你要先照顧好自己，才能照顧別人。你應該安排固定的休息時間。','說教'],
+     ['c','講得很簡單，誰來顧？']],
+  wr:'正確的道理，對方此刻聽起來像指責。',
+  r:[['h','這三年，你一直把照顧放在第一位。','肯定'],['c','我不撐，誰撐？'],
+     ['h','全家都靠你，你沒有倒下的權利。','複合反映'],['c','……有時候真的很想逃。'],
+     ['h','會想逃，是因為你真的累到極限了。','反映・正常化'],
+     ['h','如果能有一點點喘息，你最想用來做什麼？','喚起']],
+  rr:'被理解之後，他才說出真正的感受，喘息有了具體的意義。',
+  a:[['給「應該」的建議','先深度反映他的處境'],['急著安排休息','先讓他說出想要什麼']]},
+ {p:'sw',t:'獨居長者：拒絕長照服務',ctx:'88 歲獨居男性，最近跌倒過，鄰居通報。',
+  w:[['h','阿伯，你一個人住很危險，我幫你申請居服，每週來三次。','替他決定'],
+     ['c','我不用，我自己可以。'],['h','可是你上次就跌倒了……','爭論'],['c','那是意外！']],
+  wr:'越強調危險，越踩到他的自尊。',
+  r:[['h','一個人住，很多事你都自己打理得好好的。','肯定'],['c','對啊，我不想麻煩人。'],
+     ['h','不想欠人情，這對你很重要。','反映價值'],
+     ['h','如果有一件事，有人幫忙會讓你輕鬆一點，那會是什麼？','喚起'],
+     ['c','……買菜吧，提回來很重。'],['h','從買菜開始，你覺得可以接受嗎？','規劃・小步']],
+  rr:'先保住尊嚴與自主，從他願意的最小服務開始建立信任。',
+  a:[['強調危險','先肯定他的能力'],['一次排滿服務','從他提出的一件事開始']]},
+ {p:'cm',t:'需求評估：家屬說不要外人進家裡',ctx:'照專到家評估，女兒拒絕居家服務。',
+  w:[['h','這些都是政府補助，不用很可惜，大家都在用。','搬出規定＋比較'],
+     ['c','別人用是別人的事，我們不需要。']],
+  wr:'用「大家都在用」說服，家屬覺得被推銷。',
+  r:[['h','讓陌生人進家裡，會擔心不安全、不自在。','反映'],
+     ['c','上次有人來，東西就不見了。'],['h','那次的經驗讓你很不放心。','反映'],
+     ['h','如果真的要讓服務進來，你們需要先確認哪些事情才會安心？','喚起條件'],
+     ['c','固定同一個人，而且要我們在家時才來。'],['h','這兩個條件很清楚，我會照這個方向幫你們規劃。','依條件規劃']],
+  rr:'家屬的不安被當成真實經驗，服務設計依照她的條件調整。',
+  a:[['說服使用','先聽拒絕背後的經驗'],['照標準規劃','依家屬提出的安心條件規劃']]},
+ {p:'hca',t:'自立支援：長輩什麼都要人代勞',ctx:'居服員協助 83 歲女性穿衣，她希望全部由居服員來做。',
+  w:[['h','阿嬤，你要自己穿，不然手會越來越沒力。','恐嚇'],['c','我付錢就是要你們幫我。'],
+     ['h','現在講自立支援，規定要讓你自己做。','搬出規定'],['c','什麼規定，我不管。']],
+  wr:'搬出規定讓服務關係變成對立。',
+  r:[['h','你覺得請我們來，就是要幫你把事情做好。','反映'],['c','對啊。'],
+     ['h','以前這些事都是你自己來的時候，是什麼樣子？','喚起過去'],['c','我以前很勤快，哪像現在。'],
+     ['h','你一直是很勤快的人。','肯定'],
+     ['h','今天穿衣服，你想負責哪一個部分，剩下的我來？','分工・自主'],['c','扣子我來好了。']],
+  rr:'用分工代替要求，長輩保有一個自己做得到的部分。',
+  a:[['搬出自立支援規定','連結她過去勤快的樣子'],['要求全部自己做','讓她選一個部分負責']]}
+];
+let profSel='md';
+const profChips=document.getElementById('profChips'), profCases=document.getElementById('profCases');
+function bubbles(arr){return arr.map(([w,t,tag])=>`<div class="bub ${w==='h'?'h':'c'}">${esc(t)}${tag?`<br><span class="tagline">${esc(tag)}</span>`:''}</div>`).join('')}
+function renderProf(){
+  profChips.innerHTML=Object.entries(profs).map(([k,v])=>{const n=pc.filter(c=>c.p===k).length;
+    return `<button data-k="${k}" aria-pressed="${profSel===k}">${v}<small>${n} 個案例</small></button>`}).join('');
+  profChips.querySelectorAll('button').forEach(b=>b.onclick=()=>{profSel=b.dataset.k;renderProf()});
+  profCases.innerHTML=pc.filter(c=>c.p===profSel).map((c,i)=>`
+   <article class="pcase">
+     <div class="pcase-h"><div class="who2">${profs[c.p]}</div><h3>${esc(c.t)}</h3><p>${esc(c.ctx)}</p></div>
+     <div class="mtabs" role="group" aria-label="切換示範"><button class="w" data-s="w" aria-pressed="true">錯誤示範</button><button class="r" data-s="r" aria-pressed="false">MI 示範</button></div>
+     <div class="pair" data-show="w">
+       <div class="pcol wrongc"><h4>錯誤示範</h4>${bubbles(c.w)}<div class="result"><b>結果：</b>${esc(c.wr)}</div></div>
+       <div class="pcol rightc"><h4>MI 示範</h4>${bubbles(c.r)}<div class="result"><b>結果：</b>${esc(c.rr)}</div></div>
+     </div>
+     <div class="adjust"><h4>調整重點</h4><ul>${c.a.map(([f,t])=>`<li><span class="f">${esc(f)}</span><span class="ar">改成</span><span class="t">${esc(t)}</span></li>`).join('')}</ul></div>
+   </article>`).join('');
+  profCases.querySelectorAll('.pcase').forEach(card=>{
+    const pair=card.querySelector('.pair');
+    card.querySelectorAll('.mtabs button').forEach(b=>b.onclick=()=>{
+      pair.dataset.show=b.dataset.s;
+      card.querySelectorAll('.mtabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    });
+  });
+}
+renderProf();
+
+/* ---------- quiz 1 ---------- */
+const q1=[
+ ['我不想再讓孫子擔心了。','c','理由：說出為什麼想改變。'],
+ ['我年紀大了，練也沒用。','s','維持現狀的理由。先反映，不要反駁。'],
+ ['如果有人陪，我應該可以走到公園。','c','能力：表達做得到的可能。'],
+ ['這星期我會試著每天走十分鐘。','c','承諾：已經在說具體的行動。'],
+ ['反正我有在看醫生，不用自己練。','s','把改變的責任放在別人身上，偏向維持。'],
+ ['我真的很希望能自己上廁所。','c','渴望：說出想要的生活。'],
+ ['現在太忙了，以後再說。','s','維持語言。可以反映「現在時機不對」，再問什麼時候比較可能。'],
+ ['再不動，真的會越來越退化。','c','需要：感覺到非改變不可。'],
+ ['我昨天有自己走到巷口喔。','c','已踏出：已經開始行動，記得具體肯定。'],
+ ['我家人都不支持，做了也沒用。','s','維持語言。可以反映他的孤單，再找出他自己的理由。']
+];
+let q1i=0,q1score=0,q1done=false;
+function renderQ1(){
+  document.getElementById('q1stmt').textContent='「'+q1[q1i][0]+'」';
+  document.getElementById('q1fb').textContent='';document.getElementById('q1fb').className='fb';
+  ['q1c','q1s'].forEach(id=>document.getElementById(id).className='');
+  document.getElementById('q1count').textContent=`第 ${q1i+1} / ${q1.length} 句・答對 ${q1score}`;
+  q1done=false;
+}
+function pickQ1(v){
+  if(q1done)return;q1done=true;
+  const [,ans,why]=q1[q1i];const ok=v===ans;if(ok)q1score++;
+  document.getElementById(v==='c'?'q1c':'q1s').className=ok?'picked-ok':'picked-no';
+  if(!ok)document.getElementById(ans==='c'?'q1c':'q1s').className='picked-ok';
+  const fb=document.getElementById('q1fb');fb.className='fb '+(ok?'ok':'no');
+  fb.textContent=(ok?'答對了。':'再想想。')+why;
+  document.getElementById('q1count').textContent=`第 ${q1i+1} / ${q1.length} 句・答對 ${q1score}`;
+}
+document.getElementById('q1c').onclick=()=>pickQ1('c');
+document.getElementById('q1s').onclick=()=>pickQ1('s');
+document.getElementById('q1next').onclick=()=>{q1i=(q1i+1)%q1.length;if(q1i===0)q1score=0;renderQ1()};
+renderQ1();
+
+/* ---------- quiz 2 ---------- */
+const q2=[
+ {ctx:'戒菸門診，個案說：',s:'我知道該戒菸，可是壓力大的時候，只有菸能讓我放鬆。',
+  o:[['你應該找別的方法放鬆。',0,'直接給建議，是糾正反射。'],
+     ['壓力大是正常的啦。',0,'安慰，但把話題帶走了。'],
+     ['菸是你面對壓力的方法，同時你也知道它在傷害你。',1,'雙面反映，把改變的那邊放在後面。'],
+     ['你有沒有想過乾脆一次戒掉？',0,'封閉式問句，而且推得太快。']]},
+ {ctx:'據點活動，長輩說：',s:'我女兒一直逼我來上課，我又沒怎樣。',
+  o:[['你女兒是為你好啦。',0,'站到對立的一邊，容易引發爭論。'],
+     ['上課對你很有幫助喔。',0,'說服，對方更容易反彈。'],
+     ['被逼著來，感覺很不舒服，你覺得自己其實還好。',1,'反映感受與觀點，先讓他感覺被聽見。'],
+     ['那你為什麼還是來了？',0,'方向不錯，但語氣容易像質問；先反映再問會更好。']]},
+ {ctx:'家訪時，照顧者說：',s:'我每天都在顧他，根本沒有自己的時間。',
+  o:[['你要學會照顧自己。',0,'說教，照顧者會覺得又多了一個責任。'],
+     ['很多照顧者都這樣。',0,'一般化，但沒回應到她本人。'],
+     ['你可以申請喘息服務。',0,'資訊有用，但給得太早，還沒聽懂她。'],
+     ['你把他放在第一位，自己的需要一直往後排。',1,'複合反映，說出她沒說出口的處境。']]},
+ {ctx:'復健中，個案說：',s:'我也想自己走，可是每次站起來都好怕跌倒。',
+  o:[['你想自己走，只是害怕的感覺一直擋在前面。',1,'雙面反映，改變的渴望和擔心都被接住。'],
+     ['不會跌啦，我在旁邊扶你。',0,'否定他的感受，害怕不會因此消失。'],
+     ['你要多練，就不會怕了。',0,'給建議，沒有處理害怕。'],
+     ['你為什麼會怕？',0,'「為什麼」容易讓人防衛，可改成「最怕的是哪個時候？」']]}
+];
+let q2i=0,q2score=0,q2done=false;
+function renderQ2(){
+  const q=q2[q2i];
+  document.getElementById('q2ctx').textContent=q.ctx;
+  document.getElementById('q2stmt').textContent='「'+q.s+'」';
+  const box=document.getElementById('q2opts');
+  box.innerHTML=q.o.map((o,i)=>`<button data-i="${i}">${esc(o[0])}<span class="why" hidden>${esc(o[2])}</span></button>`).join('');
+  box.querySelectorAll('button').forEach(b=>b.onclick=()=>pickQ2(+b.dataset.i));
+  document.getElementById('q2count').textContent=`第 ${q2i+1} / ${q2.length} 題・答對 ${q2score}`;
+  q2done=false;
+}
+function pickQ2(i){
+  if(q2done)return;q2done=true;
+  const q=q2[q2i];if(q.o[i][1])q2score++;
+  document.querySelectorAll('#q2opts button').forEach((b,j)=>{
+    b.querySelector('.why').hidden=false;
+    if(q.o[j][1])b.classList.add('picked-ok');else if(j===i)b.classList.add('picked-no');
+  });
+  document.getElementById('q2count').textContent=`第 ${q2i+1} / ${q2.length} 題・答對 ${q2score}`;
+}
+document.getElementById('q2next').onclick=()=>{q2i=(q2i+1)%q2.length;if(q2i===0)q2score=0;renderQ2()};
+renderQ2();
+
+
+/* ---------- videos ---------- */
+const vLangs={all:'全部語言',zh:'國語',yue:'粵語',en:'英語'};
+const vTopics={all:'全部主題',demo:'對照示範',intro:'入門概念',oars:'OARS 技巧',talk:'改變語言',info:'資訊與陷阱',full:'完整示範'};
+const vids=[
+ {id:'80XyNE89eCs',l:'en',t:'demo',h:'The Ineffective Physician：沒有用 MI 的醫師',d:'醫師以說服、警告為主的門診對話。先看這支，再看下一支對照。',c:'英語示範'},
+ {id:'URiKA7CKtfc',l:'en',t:'demo',h:'The Effective Physician：用 MI 的醫師',d:'同一位病人，改用 MI 的談法。比較病人的反應差在哪裡。',c:'英語示範'},
+ {id:'Ohr0faT9xvQ',l:'zh',t:'demo',h:'沒有運用 OARS 技術的對話',d:'以個案的角度來看，助人者沒有用 OARS 時，對話帶來什麼感覺。',c:'陳偉任醫師團隊'},
+ {id:'v5fhENQkXp8',l:'zh',t:'demo',h:'善用 OARS 技術的對話',d:'同一段情境改用開放式問句、肯定、反映與摘要，和上一支對照著看。',c:'陳偉任醫師團隊'},
+ {id:'Y8fjkHJkB-Y',l:'zh',t:'intro',h:'動機式晤談，幫助你改變！',d:'介紹動機式晤談、三大精神與治療技術，影片有章節時間軸可跳著看。',c:'心情休息站・輕鬆聊心理'},
+ {id:'17qHqklweYM',l:'en',t:'intro',h:'The Righting Reflex：糾正反射',d:'MI 共同創始人 Rollnick 說明，為什麼「想把對方導正」反而讓人更不想改變。',c:'Stephen Rollnick'},
+ {id:'xXxxriLSook',l:'en',t:'intro',h:'Rollnick 談醫療照護中的 MI',d:'《Motivational Interviewing in Health Care》第二版作者訪談，談醫療場域怎麼用。',c:'Stephen Rollnick 訪談'},
+ {id:'I_76po-CiK8',l:'en',t:'intro',h:'The Method of MI：講座節錄',d:'Rollnick 講座片段，說明 MI 的方法與精神。',c:'Stephen Rollnick'},
+ {id:'VcJDSuzaMRg',l:'en',t:'intro',h:'改變階段與動機式晤談入門',d:'各改變階段的特徵，以及在每個階段可以怎麼談。',c:'英語講解'},
+ {id:'nFxr_If0IaY',l:'yue',t:'intro',h:'動機式訪談法（第三版）第一課：簡介',d:'香港 MINT 認證培訓師的系列課程第一課，有繁簡中文字幕。',c:'謝家和博士'},
+ {id:'BOUlpTrrDC8',l:'en',t:'oars',h:'Motivational Interviewing：OARS',d:'逐一說明開放式問句、肯定、反映、摘要，以及在 MI 中怎麼使用。',c:'英語講解'},
+ {id:'lgs8vzQUazc',l:'en',t:'oars',h:'MI in Action：角色扮演',d:'以青少年為對象的擬真示範，可以練習辨認每一句用了哪個 OARS 技巧。',c:'英語示範'},
+ {id:'WbOG6KXnyN0',l:'en',t:'talk',h:'和 Rollnick 一起辨認改變語言',d:'讀一段對話，找出哪些句子是改變語言。可搭配本頁的小練習。',c:'Stephen Rollnick'},
+ {id:'6sL72mIQKjw',l:'en',t:'talk',h:'Evoking Change Talk：引出改變語言',d:'怎麼引出改變語言、評估準備度、談改變的好處與代價。',c:'英語講解'},
+ {id:'l_m591fgrtM',l:'en',t:'talk',h:'從維持語言走向改變',d:'聽到維持語言時，用反映與以個案為中心的方式回應。',c:'英語講解'},
+ {id:'WVIcDg7Abh8',l:'en',t:'talk',h:'MI Tip of the Day：對改變語言保持敏感',d:'短短的技巧提醒：改變語言越多，越可能啟動行為改變。',c:'短技巧'},
+ {id:'-ZmhD2kjNuY',l:'en',t:'talk',h:'Change Talk：運動習慣的晤談片段',d:'個案談增加運動的進展，治療師聽到改變語言後如何用策略性問句與反映。',c:'英語示範'},
+ {id:'7MzqsSvWJ8Y',l:'zh',t:'info',h:'動機式晤談：提供訊息（或建議）三步驟',d:'依合作、誘發、自主的精神給個案資訊，對應本頁的「先問、再給、再問」。',c:'陳偉任醫師'},
+ {id:'BdTbntg-nyY',l:'zh',t:'info',h:'會談中常見的陷阱：晤談過程中的路障',d:'醫師、護理師、社工等助人者容易不自覺掉進的溝通路障。',c:'陳偉任醫師'},
+ {id:'jXtslk8MmuA',l:'en',t:'full',h:'MI 在復健：引出改變語言示範',d:'復健情境的完整示範，適合 OT、PT 與復能團隊觀摩。',c:'英語示範'},
+ {id:'Ftow5OBheqA',l:'yue',t:'full',h:'動機式訪談法廣東話示範（目標：執屋）',d:'完整晤談示範，有中文字幕，可以搭配下一支的解碼影片。',c:'謝家和博士'},
+ {id:'Zbp1ZIWlK4Y',l:'yue',t:'full',h:'【執屋】面談解碼',d:'用治療忠實度編碼手冊逐句拆解上一支示範，看每一句用了什麼技巧。',c:'謝家和博士'},
+ {id:'5hxjCsJA7WU',l:'yue',t:'full',h:'動機式訪談法示範：改善失眠',d:'以睡眠問題為主題的晤談示範，有繁簡中文字幕。',c:'謝家和博士'}
+];
+let vL='all',vT='all',seen={};
+try{seen=JSON.parse(localStorage.getItem('mi-seen')||'{}')||{}}catch(e){seen={}}
+function saveSeen(){try{localStorage.setItem('mi-seen',JSON.stringify(seen))}catch(e){}}
+function vChips(el,obj,cur,set){
+  el.innerHTML=Object.entries(obj).map(([k,v])=>`<button data-k="${k}" aria-pressed="${cur===k}">${v}</button>`).join('');
+  el.querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.k);renderVids()});
+}
+function renderVids(){
+  vChips(document.getElementById('vLang'),vLangs,vL,k=>vL=k);
+  vChips(document.getElementById('vTopic'),vTopics,vT,k=>vT=k);
+  const list=vids.filter(v=>(vL==='all'||v.l===vL)&&(vT==='all'||v.t===vT));
+  const g=document.getElementById('vGrid');
+  g.innerHTML=list.length?list.map(v=>{
+    const url='https://www.youtube.com/watch?v='+v.id;
+    return `<article class="vc">
+      <a class="vthumb ${v.l}" href="${url}" target="_blank" rel="noopener" aria-label="在 YouTube 播放：${esc(v.h)}">
+        <span class="lang">${vLangs[v.l]}</span>${seen[v.id]?'<span class="seen">看過了</span>':''}<span class="play"></span></a>
+      <div class="vbody"><div class="topic">${vTopics[v.t]}</div><h3>${esc(v.h)}</h3><p>${esc(v.d)}</p><div class="ch">${esc(v.c)}</div></div>
+      <div class="vact"><a href="${url}" target="_blank" rel="noopener">到 YouTube 觀看</a>
+        <button data-id="${v.id}" aria-pressed="${!!seen[v.id]}">${seen[v.id]?'已看過':'標記看過'}</button></div>
+    </article>`}).join(''):'<p class="note">這個組合目前沒有影片，換一個語言或主題看看。</p>';
+  g.querySelectorAll('.vact button').forEach(b=>b.onclick=()=>{const id=b.dataset.id;if(seen[id])delete seen[id];else seen[id]=1;saveSeen();renderVids()});
+}
+renderVids();
+document.querySelectorAll('a[data-jump]').forEach(a=>a.addEventListener('click',()=>{vT=a.dataset.jump;vL='all';renderVids()}));
+
+/* ---------- evidence ---------- */
+const evTags={all:'全部',gen:'整體',med:'醫療・慢性病',old:'長照・高齡',dis:'身心障礙・復健',fam:'照顧者'};
+const ev=[
+ {t:'gen',y:'2023',h:'Motivational Interviewing: Helping People Change and Grow（第四版）',j:'Miller & Rollnick｜Guilford Press',
+  who:'MI 發展者的教科書',what:'重新定義 MI',res:'精神中的「喚起」改為「賦能」；四個「過程」改稱「任務」；強調 MI 可作為提供其他服務的說話風格，並貫穿整個改變歷程。',lim:'屬於理論與實務專書，非單一實證研究。',
+  u:'https://motivationalinterviewing.org/sites/default/files/what_new_in_mi-4.pdf'},
+ {t:'gen',y:'2005',h:'Motivational interviewing: a systematic review and meta-analysis',j:'Rubak 等｜British Journal of General Practice',
+  who:'72 篇隨機對照試驗，多種疾病與行為問題',what:'MI 與傳統建議比較',res:'74% 的研究顯示 MI 有效；15 分鐘短談約 64% 有效；接觸超過五次、追蹤較久的研究，看到效果的比例較高。',lim:'研究間差異大，僅 19 篇可合併做統合分析。',
+  u:'https://pubmed.ncbi.nlm.nih.gov/15826439/'},
+ {t:'gen',y:'2018',h:'Effectiveness of MI on adult behaviour change in health and social care settings: a systematic review of reviews',j:'Frost 等｜PLOS ONE',
+  who:'醫療與社會照顧場域的成人',what:'統整既有系統性回顧',res:'在 155 項統合比較中，有 11 項找到中等品質證據，顯示 MI 有短期（半年內）且小幅的效果。',lim:'作者提醒，MI 被廣泛推薦為通用策略，但各族群的證據強度並不一致。',
+  u:'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204890'},
+ {t:'med',y:'2024',h:'MI 行為介入對成人身體活動的效果：系統性回顧與統合分析',j:'BMJ 2024;386:e078713',
+  who:'成人，含慢性病族群',what:'含 MI 的行為介入 vs 不含 MI',res:'身體活動量平均每天多約 1,323 步、中高強度活動每週多約 95 分鐘、久坐每天少約 51 分鐘。',lim:'效果主要在短期，介入結束後未看到持續效果。',
+  u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC11234249'},
+ {t:'med',y:'2024',h:'MI 用於高血壓管理：統合分析',j:'Frontiers in Cardiovascular Medicine',
+  who:'成人高血壓患者（隨機對照試驗）',what:'MI 介入',res:'MI 與血壓下降有關，研究也評估自我效能與生活品質等結果。',lim:'依納入研究的品質與異質性判讀。',
+  u:'https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2024.1457039/full'},
+ {t:'med',y:'2025',h:'MI 促進健康生活型態：證據、實施與數位應用',j:'回顧文章｜PMC',
+  who:'健康生活型態相關研究',what:'整理 MI 在不同健康問題的成效與實施',res:'MI 在多項健康行為上有幫助；成效常取決於執行者是否確實用出 MI 技巧。',lim:'部分結果（如體重）在 12 個月追蹤時未能維持。',
+  u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC12526391/'},
+ {t:'dis',y:'2007',h:'Motivational Interviewing Early After Acute Stroke: A Randomized, Controlled Trial',j:'Watkins 等｜Stroke',
+  who:'411 位急性中風住院病人',what:'最多四次、每週一次的 MI',res:'中風後 3 個月，MI 組心情正常的比例較高。',lim:'單一中心研究；對日常功能與復原期待沒有看到差異。',
+  u:'https://www.ahajournals.org/doi/full/10.1161/01.STR.0000258114.28006.d7'},
+ {t:'dis',y:'2011',h:'The 12-month effects of early MI after acute stroke',j:'Watkins 等｜Stroke',
+  who:'同一試驗的 12 個月追蹤',what:'早期 MI + 常規照護',res:'12 個月時心情正常比例：MI 組 48.0%、對照組 37.7%；死亡率也較低。',lim:'作者建議以更大型研究確認；多中心試驗目前正在英國進行。',
+  u:'https://pubmed.ncbi.nlm.nih.gov/21700946/'},
+ {t:'dis',y:'2024',h:'MI 結合居家復健方案對中風病人身心健康的效果',j:'越南隨機對照試驗｜IJNS Advances',
+  who:'92 位中風病人',what:'MI + 居家復健 vs 標準照護',res:'介入組在心理與身體健康指標上，較可能出現明顯改善。',lim:'樣本數較小；為合併介入，無法單獨看 MI 的貢獻。',
+  u:'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11602558/'},
+ {t:'dis',y:'2020',h:'MI 與脊髓損傷住院病人的 PT／OT 參與',j:'Archives of Physical Medicine and Rehabilitation',
+  who:'脊髓損傷住院病人與其治療師',what:'訓練 PT、OT 使用 MI',res:'研究目的是提升病人在復健中的參與；研究機構報導，接受 MI 訓練的治療師，其病人參與度較高。',lim:'治療師人數少（14 位），作者計畫進行更大型研究。',
+  u:'https://www.archives-pmr.org/article/S0003-9993(20)31076-5/abstract'},
+ {t:'dis',y:'2024',h:'正念與 MI 導向的身心整合介入：社區脊髓損傷者',j:'香港混合方法隨機對照試驗｜Archives of PM&R',
+  who:'社區脊髓損傷者',what:'線上團體身心整合介入',res:'介入可行、接受度高，有助於維持生活品質、避免下滑。',lim:'為合併正念的團體介入。',
+  u:'https://www.sciencedirect.com/science/article/abs/pii/S0003999324010062'},
+ {t:'old',y:'2023',h:'MI 強化高齡者預立醫療照護計畫：系統性回顧',j:'BMJ Supportive & Palliative Care',
+  who:'高齡者，含多重慢性病與社區長者',what:'以 MI 為基礎的預立醫療照護計畫',res:'短期提升長者參與的準備度，長期提高完成預立醫療決定的比例。',lim:'屬於特定議題（預立醫療照護計畫）。',
+  u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC11672022/'},
+ {t:'fam',y:'2021',h:'以動機式健康教練為基礎的電話介入：失智症照顧者心理健康',j:'Sarabia-Cobo 等｜International Journal of Older People Nursing',
+  who:'日間照顧中心失智長者的家屬照顧者',what:'六週、每週約 20 分鐘的電話 MI 教練',res:'照顧者的自我效能與心理健康改善。',lim:'對象為中度失智者的照顧者，單一地區研究。',
+  u:'https://pubmed.ncbi.nlm.nih.gov/34337869/'},
+ {t:'fam',y:'2025',h:'MI 促進住宿機構家屬參與預立醫療照護計畫',j:'準實驗研究｜PMC',
+  who:'護理之家長者的家屬',what:'護理師主導的 MI 介入',res:'可行，並提升家屬參與預立醫療照護計畫的準備度。',lim:'非隨機分派設計。',
+  u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC12465269'}
+];
+let evF='all';
+const evChips=document.getElementById('evChips'), evGrid=document.getElementById('evGrid');
+function renderEv(){
+  evChips.innerHTML=Object.entries(evTags).map(([k,v])=>`<button data-k="${k}" aria-pressed="${evF===k}">${v}</button>`).join('');
+  evChips.querySelectorAll('button').forEach(b=>b.onclick=()=>{evF=b.dataset.k;renderEv()});
+  evGrid.innerHTML=ev.filter(e=>evF==='all'||e.t===evF).map(e=>`
+    <article class="ev">
+      <div class="meta">${evTags[e.t]}・${e.y}・${esc(e.j)}</div>
+      <h3>${esc(e.h)}</h3>
+      <dl><dt>對象</dt><dd>${esc(e.who)}</dd><dt>做法</dt><dd>${esc(e.what)}</dd><dt>結果</dt><dd>${esc(e.res)}</dd><dt>範圍</dt><dd>${esc(e.lim)}</dd></dl>
+      <a href="${e.u}" target="_blank" rel="noopener">查看原文</a>
+    </article>`).join('');
+}
+renderEv();
+
+/* ---------- print ---------- */
+document.getElementById('printBtn').onclick=()=>{
+  document.body.classList.add('print-only-pocket');
+  window.print();
+  setTimeout(()=>document.body.classList.remove('print-only-pocket'),500);
+};
+</script>
+</body>
+</html>
